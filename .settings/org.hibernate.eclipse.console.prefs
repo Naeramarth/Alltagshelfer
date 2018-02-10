@@ -1,0 +1,3 @@
+default.configuration=gs-serving-web-content
+eclipse.preferences.version=1
+hibernate3.enabled=true
