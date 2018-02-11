@@ -5,7 +5,7 @@ tomcat:
 
 spring:
  datasource:
-  url: jdbc:mysql://192.168.2.106:56243/alltagshelfer
+  url: jdbc:mysql://alltagshelfer.ddns.net:56243/alltagshelfer
   testWhileIdle: true
   validationQuery: SELECT 1
   driver-class-name: com.mysql.jdbc.Driver
