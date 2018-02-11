@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "\"id\"")
 	private int id;
@@ -38,6 +38,10 @@ public class Client implements Serializable {
 	private String token;
 
 	public Client() {
+	}
+
+	public Client(String name) {
+		this.name = name;
 	}
 
 	public int getId() {
