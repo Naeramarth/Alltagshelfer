@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: gs-serving-web-content
 Implementation-Version: 0.1.0
-Built-By: FSche
+Built-By: larau
 Implementation-Vendor-Id: org.springframework
-Build-Jdk: 1.8.0_144
+Build-Jdk: 1.8.0_141
 Implementation-URL: http://projects.spring.io/spring-boot/gs-serving-w
  eb-content/
 Created-By: Maven Integration for Eclipse
