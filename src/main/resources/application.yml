@@ -14,8 +14,12 @@ spring:
  jpa:
   show-sql: true
   hibernate:
-   ddl-auto: validate
+   ddl-auto: update
    naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
  properties:
   hibernate:
    dialect: org.hibernate.dialect.MySQL5Dialect
+ mvc:
+  view:
+   prefix: /WEB-INF/templates/
+   suffix: .jsp
