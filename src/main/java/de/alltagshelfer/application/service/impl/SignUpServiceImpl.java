@@ -9,6 +9,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ import de.alltagshelfer.application.repository.RoleRepository;
 import de.alltagshelfer.application.service.SignUpService;
 
 @Service
+@DependsOn("passwordEncoder")
 public class SignUpServiceImpl implements SignUpService {
 
 	@Autowired

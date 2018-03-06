@@ -9,6 +9,8 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class AlltagshelferApplication extends SpringBootServletInitializer {
@@ -40,5 +42,10 @@ public class AlltagshelferApplication extends SpringBootServletInitializer {
 		connector.setScheme("ajp");
 		connector.setPort(ajpPort);
 		return connector;
+	}
+
+	@Bean(name = "passwordEncoder")
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 }

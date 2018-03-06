@@ -3,6 +3,7 @@ package de.alltagshelfer.application.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -18,6 +19,7 @@ import de.alltagshelfer.application.repository.BenutzerRepository;
 @EnableWebSecurity
 @EnableJpaRepositories(basePackageClasses = BenutzerRepository.class)
 @Configuration
+@DependsOn("passwordEncoder")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -41,10 +43,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.loginPage("/login").permitAll().successForwardUrl("/secured/anzeigen").failureForwardUrl("/auth/error")
 				.and().logout().logoutUrl("/logout/").logoutSuccessUrl("/").invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID");
-	}
-
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
 	}
 }
