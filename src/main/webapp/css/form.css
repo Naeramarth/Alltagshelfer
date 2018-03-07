@@ -82,11 +82,3 @@ select {
 textarea {
     height: 12em;
 }
-
-/*
- * Fehlermeldungen
- */
-form .errors {
-    margin-top: 1em;
-    color: red;
-}

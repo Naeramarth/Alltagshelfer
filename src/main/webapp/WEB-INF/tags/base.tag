@@ -16,7 +16,7 @@
 <head>
 <meta charset="utf-8" />
 
-<title>Minimarkt: ${title}</title>
+<title>Alltagshelfer: ${title}</title>
 
 <link rel="stylesheet"
 	href="<c:url value="/fontello/css/fontello.css"/>" />
@@ -37,6 +37,18 @@
 		<%-- Menü --%>
 		<div id="menubar">
 			<jsp:invoke fragment="menu" />
+
+			<security:authorize access="hasRole('ADMIN')">
+				<div class="menuitem">
+					<a href="<c:url value="/admin/"/>">Admin Tools</a>
+				</div>
+			</security:authorize>
+
+			<security:authorize access="hasRole('SUPERADMIN')">
+				<div class="menuitem">
+					<a href="<c:url value="/super/admin/"/>">Super Admin Tools</a>
+				</div>
+			</security:authorize>
 
 			<security:authorize access="isAuthenticated()">
 				<div class="menuitem">

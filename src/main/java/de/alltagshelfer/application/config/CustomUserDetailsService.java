@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import de.alltagshelfer.application.model.Benutzer;
+import de.alltagshelfer.application.entity.Benutzer;
 import de.alltagshelfer.application.model.BenutzerDetails;
 import de.alltagshelfer.application.repository.BenutzerRepository;
 

@@ -4,7 +4,6 @@ import org.apache.catalina.connector.Connector;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -23,7 +22,7 @@ public class AlltagshelferApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AlltagshelferApplication.class, args);
-		
+
 	}
 
 	@Bean
@@ -31,18 +30,18 @@ public class AlltagshelferApplication extends SpringBootServletInitializer {
 
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
 		if (tomcatAjpEnabled) {
-			tomcat.addAdditionalTomcatConnectors(redirectConnector());
+			tomcat.setProtocol("AJP/1.3");
+			tomcat.setPort(ajpPort);
 		}
 
 		return tomcat;
 	}
 
-	private Connector redirectConnector() {
-		Connector connector = new Connector(TomcatServletWebServerFactory.DEFAULT_PROTOCOL);
-		connector.setScheme("ajp");
-		connector.setPort(ajpPort);
-		return connector;
-	}
+//	private Connector redirectConnector() {
+//		Connector connector = new Connector("AJP/1.3");
+//		connector.setPort(ajpPort);
+//		return connector;
+//	} 
 
 	@Bean(name = "passwordEncoder")
 	public PasswordEncoder passwordEncoder() {

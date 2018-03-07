@@ -1,6 +1,7 @@
 package de.alltagshelfer.application.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -13,7 +14,8 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import de.alltagshelfer.application.model.Benutzer;
+import de.alltagshelfer.application.entity.Benutzer;
+import de.alltagshelfer.application.entity.Role;
 import de.alltagshelfer.application.model.RoleName;
 import de.alltagshelfer.application.repository.BenutzerRepository;
 import de.alltagshelfer.application.repository.RoleRepository;
@@ -41,7 +43,9 @@ public class SignUpServiceImpl implements SignUpService {
 		Benutzer benutzer = new Benutzer(username, vorname, nachname, strasse, hausnummer, postleitzahl, ort, eMail,
 				telefonnummer);
 		benutzer.setPassword(passwordEncoder.encode(password1));
-		benutzer.setRoles(roleRepo.findByRole(RoleName.ROLE_USER));
+		Set<Role> s = new HashSet<>();
+		s.add(roleRepo.findByRole(RoleName.ROLE_USER));
+		benutzer.setRoles(s);
 		Set<ConstraintViolation<Benutzer>> set = validator.validate(benutzer);
 		List<String> messages = new ArrayList<String>();
 		set.forEach((ConstraintViolation<Benutzer> violation) -> {
@@ -50,7 +54,7 @@ public class SignUpServiceImpl implements SignUpService {
 		Optional<Benutzer> op = repo.findByBenutzername(username);
 		if (op.isPresent())
 			messages.add("Ein Benutzer mit diesem Benutzernamen existiert bereits");
-		if (messages.size() == 0)
+		if (messages.isEmpty())
 			repo.save(benutzer);
 		return messages;
 	}

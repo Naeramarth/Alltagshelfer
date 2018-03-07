@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.alltagshelfer.application.model;
+package de.alltagshelfer.application.entity;
 
 import java.io.Serializable;
 import java.sql.Time;
@@ -24,6 +24,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.TableGenerator;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import de.alltagshelfer.application.model.ArtDerAnzeige;
+import de.alltagshelfer.application.model.ArtDesPreises;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

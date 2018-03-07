@@ -39,8 +39,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.csrf().disable();
 		http.authorizeRequests().antMatchers("/signup/", "/", "/css/**", "/fontello/**", "/img/**").permitAll()
-				.antMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated().and().formLogin()
-				.loginPage("/login").permitAll().successForwardUrl("/secured/anzeigen").failureForwardUrl("/auth/error")
+				.antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/super/admin/**").hasRole("SUPERADMIN")
+				.anyRequest().authenticated()
+				.and().formLogin().loginPage("/login").permitAll().successForwardUrl("/secured/anzeigen").failureForwardUrl("/auth/error")
 				.and().logout().logoutUrl("/logout/").logoutSuccessUrl("/").invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID");
 	}

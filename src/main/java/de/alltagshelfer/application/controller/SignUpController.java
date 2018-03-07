@@ -10,8 +10,8 @@ import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import de.alltagshelfer.application.model.FormValues;
 import de.alltagshelfer.application.service.SignUpService;
@@ -22,19 +22,19 @@ public class SignUpController {
 	@Autowired
 	private SignUpService signUpService;
 
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	@GetMapping("/signup")
 	public String signUp() {
 		return "signup";
 	}
 
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	@PostMapping("/signup")
 	public String signUpPost(HttpServletRequest request, Model model) {
 		List<String> error = new ArrayList<>();
 
 		String username = request.getParameter("signup_username");
 		String password1 = request.getParameter("signup_password1");
 		String password2 = request.getParameter("signup_password2");
-		if(!password1.equals(password2))
+		if (!password1.equals(password2))
 			error.add("Die Passwörter dürfen nicht unterschiedlich sein.");
 		String name = request.getParameter("signup_name");
 		String[] name_array = name.split(" ");

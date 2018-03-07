@@ -1,15 +1,15 @@
-package de.alltagshelfer.application.model;
+package de.alltagshelfer.application.entity;
 
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
+import de.alltagshelfer.application.model.RoleName;
 import lombok.Data;
 
 @Entity
@@ -17,7 +17,6 @@ import lombok.Data;
 public class Role {
 
 	@Id
-	@GeneratedValue
 	private int roleId;
 
 	@Enumerated(EnumType.STRING)
@@ -31,7 +30,8 @@ public class Role {
 
 	}
 
-	public Role(RoleName role) {
+	public Role(int roleId, RoleName role) {
+		this.roleId = roleId;
 		this.role = role;
 	}
 }

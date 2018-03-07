@@ -20,7 +20,7 @@
         <div class="menuitem">
             <c:choose>
                 <c:when test="${edit}">
-                    <a href="<c:url value="/app/tasks/"/>">Übersicht</a>
+                    <a href="<c:url value="/secured/anzeigen"/>">Übersicht</a>
                 </c:when>
                 <c:otherwise>
                     <a href="<c:url value="/"/>">Einloggen</a>
@@ -33,8 +33,6 @@
         <div class="container">
             <form method="post" class="stacked">
                 <div class="column">
-                    <%-- CSRF-Token --%>
-                    <input type="hidden" name="csrf_token" value="${csrf_token}">
                     <input type="hidden" name="edit" value="${edit}">
 
                     <%-- Eingabefelder --%>

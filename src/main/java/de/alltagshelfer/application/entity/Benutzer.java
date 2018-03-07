@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.alltagshelfer.application.model;
+package de.alltagshelfer.application.entity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,7 +27,7 @@ import lombok.EqualsAndHashCode;
  * @author FSche
  */
 @Entity
-@EqualsAndHashCode(exclude = { "anzeige", "anzeigen" })
+@EqualsAndHashCode(exclude = { "anzeige" })
 @Data
 public class Benutzer implements Serializable {
 
