@@ -6,4 +6,6 @@ public interface SuperAdminService {
 
 	ErrorModel removeAdmin(String username);
 
+	ErrorModel reset();
+
 }

@@ -38,4 +38,18 @@ public class AdminController {
 		model.addAttribute("message", em.getMessage());
 		return "admin_add";
 	}
+
+	@GetMapping("/remove/all")
+	public String removeAllUsers() {
+		
+		return "admin_remove_all";
+	}
+
+	@PostMapping("/remove/all")
+	public String removeAllUsersPost(Model model) {
+		ErrorModel em = adminService.removeAllUsers();
+		model.addAttribute("errors", em.getErrors());
+		model.addAttribute("message", em.getMessage());
+		return "admin_remove_all";
+	}
 }

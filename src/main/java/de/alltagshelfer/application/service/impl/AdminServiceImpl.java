@@ -50,4 +50,11 @@ public class AdminServiceImpl implements AdminService {
 		return em;
 	}
 
+	@Override
+	public ErrorModel removeAllUsers() {
+		ErrorModel em = new ErrorModel();
+		//TODO
+		return em;
+	}
+
 }

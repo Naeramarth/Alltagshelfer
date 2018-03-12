@@ -6,4 +6,6 @@ public interface AdminService {
 
 	ErrorModel addAdmin(String username);
 
+	ErrorModel removeAllUsers();
+
 }

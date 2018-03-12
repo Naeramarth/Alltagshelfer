@@ -11,7 +11,9 @@ import de.alltagshelfer.application.entity.Benutzer;
 import de.alltagshelfer.application.entity.Role;
 import de.alltagshelfer.application.model.ErrorModel;
 import de.alltagshelfer.application.model.RoleName;
+import de.alltagshelfer.application.repository.AnzeigeRepository;
 import de.alltagshelfer.application.repository.BenutzerRepository;
+import de.alltagshelfer.application.repository.KategorieRepository;
 import de.alltagshelfer.application.repository.RoleRepository;
 import de.alltagshelfer.application.service.SuperAdminService;
 
@@ -23,6 +25,12 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 
 	@Autowired
 	private RoleRepository roleRepo;
+
+	@Autowired
+	private AnzeigeRepository anzeigeRepo;
+
+	@Autowired
+	private KategorieRepository kategorieRepo;
 
 	@Override
 	public ErrorModel removeAdmin(String username) {
@@ -48,6 +56,21 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 			}
 		} catch (Exception e) {
 			em.addError("Ein Fehler ist bei der Rollenänderung passiert.");
+		}
+		return em;
+	}
+
+	@Override
+	public ErrorModel reset() {
+		ErrorModel em = new ErrorModel();
+		try {
+			repo.deleteByRoles_RoleNot(RoleName.ROLE_SUPERADMIN);
+			anzeigeRepo.deleteAll();
+			kategorieRepo.deleteAll();
+			em.setMessage("Die Datenbank wurde erfolgreich zurückgesetzt");
+		} catch (Exception e) {
+			e.printStackTrace();
+			em.addError("Beim Zurücksetzen der Datenbank ist ein Fehler passiert");
 		}
 		return em;
 	}

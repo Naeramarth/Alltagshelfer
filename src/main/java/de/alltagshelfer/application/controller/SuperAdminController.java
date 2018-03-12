@@ -37,4 +37,21 @@ public class SuperAdminController {
 		model.addAttribute("message", em.getMessage());
 		return "super_admin_roles";
 	}
+
+	@GetMapping("/reset")
+	public String reset() {
+		return "super_admin_reset";
+	}
+
+	@PostMapping("/reset")
+	public String resetPost(HttpServletRequest request, Model model) {
+		if (Boolean.parseBoolean(request.getParameter("checkbox"))) {
+			model.addAttribute("errors", "Bestätigen Sie die Aktion");
+		} else {
+			ErrorModel em = superAdminService.reset();
+			model.addAttribute("errors", em.getErrors());
+			model.addAttribute("message", em.getMessage());
+		}
+		return "super_admin_reset";
+	}
 }
