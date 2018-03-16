@@ -30,15 +30,16 @@
                     <label for="username">
                         Benutzername:
                         <span class="required">*</span>
-                    </label>
-        <input type="text" id="username" name="username" />
+                    </label> <input type="text" id="username" name="username" />
 
                     <label for="password">
                         Passwort:
                         <span class="required">*</span>
                     </label> <input type="password" id="password"
 						name="password" />
+                    
                     <%-- Button zum Abschicken --%>
+                    <a></a>
                     <button class="icon-login" type="submit">
                         Einloggen
                     </button>

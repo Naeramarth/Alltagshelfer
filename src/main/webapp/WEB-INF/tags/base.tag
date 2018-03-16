@@ -30,7 +30,7 @@
 	<header>
 		<%-- Titelzeile --%>
 		<div id="titlebar">
-			<div class="appname">Alltagshelfer </div>
+			<div class="appname"></div>
 			<div class="content">${title}</div>
 		</div>
 
