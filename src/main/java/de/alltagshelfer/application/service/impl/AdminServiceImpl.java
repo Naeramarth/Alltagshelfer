@@ -40,7 +40,7 @@ public class AdminServiceImpl implements AdminService {
 					em.addError("Dieser Benutzer ist bereits Administrator.");
 				else {
 					roles.add(roleRepo.findByRole(RoleName.ROLE_ADMIN));
-					em.setMessage(benutzer.getBenutzername());
+					em.setMessage("Benutzer " + benutzer.getBenutzername() + " ist jetzt ein Administrator.");
 					repo.save(benutzer);
 				}
 			}
@@ -50,11 +50,30 @@ public class AdminServiceImpl implements AdminService {
 		return em;
 	}
 
+
 	@Override
-	public ErrorModel removeAllUsers() {
+	public ErrorModel removeUser(String username) {
 		ErrorModel em = new ErrorModel();
-		//TODO
+		try {
+			Optional<Benutzer> user = repo.findByBenutzername(username);
+			if (!user.isPresent())
+				em.addError("Der angegebene Benutzer existiert nicht.");
+			else {
+				Benutzer benutzer = user.get();
+				Set<Role> roles = benutzer.getRoles();
+				Set<RoleName> rn = new HashSet<>();
+				roles.forEach((r) -> rn.add(r.getRole()));
+				if (rn.contains(RoleName.ROLE_ADMIN))
+					em.addError("Dieser Benutzer ist ein Administrator.");
+				else {
+					String name = benutzer.getBenutzername();
+					repo.deleteByBenutzername(name);
+					em.setMessage("Benutzer " + name + " wurde erfolgreich gelöscht.");
+				}
+			}
+		} catch (Exception e) {
+			em.addError("Ein Fehler ist beim löschen passiert.");
+		}
 		return em;
 	}
-
 }

@@ -15,7 +15,7 @@
 
 <template:base>
 	<jsp:attribute name="title">
-        Add Admin
+        Alle Benutzer Löschen
     </jsp:attribute>
 
 	<jsp:attribute name="head">
@@ -29,19 +29,27 @@
             <a href="<c:url value="/secured/anzeigen/"/>">Übersicht</a>
         </div>
         <div class="menuitem">
-            <a href="<c:url value="/admin/remove/"/>">Benutzer Löschen</a>
+            <a href="<c:url value="/super/admin/roles/"/>">Rollenverwaltung</a>
+        </div>
+        <div class="menuitem">
+            <a href="<c:url value="/super/admin/remove/"/>">Benutzer Löschen</a>
+        </div>
+        <div class="menuitem">
+            <a href="<c:url value="/super/admin/reset/"/>">Datenbank Reset</a>
         </div>
     </jsp:attribute>
 
 	<jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="POST" class="horizontal" id="search">
-            <input type="text" name="username"
-				placeholder="Benutzername" />
-	
-            <button class="icon-pencil" type="submit">
-            	Benutzer zu Admin machen
-            </button>
+			<div class="checkbox">
+    			<input id="check" name="checkbox" type="checkbox">
+    			<label for="checkbox">
+      				Diese Operation löscht alle Benutzer außer dem Super Admin.
+    			</label>
+  			</div>
+  			<input type="submit" name="anmelden" class="button" id="btncheck"
+				value="Send" />
         </form>
         
 		<c:if test="${!empty message}">

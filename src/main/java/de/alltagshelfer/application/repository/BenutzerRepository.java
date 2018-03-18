@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import de.alltagshelfer.application.entity.Benutzer;
-import de.alltagshelfer.application.model.RoleName;
 
 public interface BenutzerRepository extends CrudRepository<Benutzer, Long> {
 
@@ -15,6 +14,6 @@ public interface BenutzerRepository extends CrudRepository<Benutzer, Long> {
 
 	@Modifying
 	@Transactional
-	public void deleteByRoles_RoleNot(RoleName role);
+	public void deleteByBenutzername(String benutzername);
 
 }

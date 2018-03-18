@@ -15,7 +15,7 @@
 
 <template:base>
 	<jsp:attribute name="title">
-        Add Admin
+        Benutzer löschen
     </jsp:attribute>
 
 	<jsp:attribute name="head">
@@ -29,7 +29,13 @@
             <a href="<c:url value="/secured/anzeigen/"/>">Übersicht</a>
         </div>
         <div class="menuitem">
-            <a href="<c:url value="/admin/remove/"/>">Benutzer Löschen</a>
+            <a href="<c:url value="/super/admin/roles/"/>">Rollenverwaltung</a>
+        </div>
+        <div class="menuitem">
+            <a href="<c:url value="/super/admin/remove/all/"/>">Alle Benutzer Löschen</a>
+        </div>
+        <div class="menuitem">
+            <a href="<c:url value="/super/admin/reset/"/>">Datenbank Reset</a>
         </div>
     </jsp:attribute>
 
@@ -40,7 +46,7 @@
 				placeholder="Benutzername" />
 	
             <button class="icon-pencil" type="submit">
-            	Benutzer zu Admin machen
+            	Benutzer löschen
             </button>
         </form>
         

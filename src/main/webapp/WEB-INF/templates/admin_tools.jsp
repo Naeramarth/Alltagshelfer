@@ -24,9 +24,6 @@
         <div class="menuitem">
             <a href="<c:url value="/admin/remove"/>">Benutzer Löschen</a>
         </div>
-        <div class="menuitem">
-            <a href="<c:url value="/admin/remove/all"/>">Alle Benutzer Löschen</a>
-        </div>
     </jsp:attribute>
     
     <jsp:attribute name="content">

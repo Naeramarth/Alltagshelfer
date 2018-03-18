@@ -8,4 +8,8 @@ public interface SuperAdminService {
 
 	ErrorModel reset();
 
+	ErrorModel removeUser(String username);
+
+	ErrorModel removeAllUsers();
+
 }

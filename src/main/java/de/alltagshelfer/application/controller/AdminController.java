@@ -39,17 +39,17 @@ public class AdminController {
 		return "admin_add";
 	}
 
-	@GetMapping("/remove/all")
-	public String removeAllUsers() {
-		
-		return "admin_remove_all";
+	@GetMapping("/remove")
+	public String removeUser() {
+		return "admin_remove";
 	}
 
-	@PostMapping("/remove/all")
-	public String removeAllUsersPost(Model model) {
-		ErrorModel em = adminService.removeAllUsers();
+	@PostMapping("/remove")
+	public String removeAllUsersPost(HttpServletRequest request, Model model) {
+		String username = request.getParameter("username");
+		ErrorModel em = adminService.removeUser(username);
 		model.addAttribute("errors", em.getErrors());
 		model.addAttribute("message", em.getMessage());
-		return "admin_remove_all";
+		return "admin_remove";
 	}
 }

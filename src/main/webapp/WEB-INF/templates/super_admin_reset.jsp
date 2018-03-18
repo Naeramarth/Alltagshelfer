@@ -15,7 +15,7 @@
 
 <template:base>
 	<jsp:attribute name="title">
-        Rollenverwaltung
+        Datenbank Reset
     </jsp:attribute>
 
 	<jsp:attribute name="head">

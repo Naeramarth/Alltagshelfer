@@ -45,13 +45,46 @@ public class SuperAdminController {
 
 	@PostMapping("/reset")
 	public String resetPost(HttpServletRequest request, Model model) {
-		if (Boolean.parseBoolean(request.getParameter("checkbox"))) {
-			model.addAttribute("errors", "Bestätigen Sie die Aktion");
-		} else {
+		String checked = request.getParameter("checkbox");
+		if (checked !=null && checked.equals("on")) {
 			ErrorModel em = superAdminService.reset();
 			model.addAttribute("errors", em.getErrors());
 			model.addAttribute("message", em.getMessage());
+		} else {
+			model.addAttribute("errors", "Bestätigen Sie die Aktion");
 		}
 		return "super_admin_reset";
+	}
+
+	@GetMapping("/remove")
+	public String removeUser() {
+		return "super_admin_remove";
+	}
+
+	@PostMapping("/remove")
+	public String removeUserPost(HttpServletRequest request, Model model) {
+		String username = request.getParameter("username");
+		ErrorModel em = superAdminService.removeUser(username);
+		model.addAttribute("errors", em.getErrors());
+		model.addAttribute("message", em.getMessage());
+		return "super_admin_remove";
+	}
+
+	@GetMapping("/remove/all")
+	public String removeAllUsers() {
+		return "super_admin_remove_all";
+	}
+
+	@PostMapping("/remove/all")
+	public String removeAllUsersPost(HttpServletRequest request, Model model) {
+		String checked = request.getParameter("checkbox");
+		if (checked !=null && checked.equals("on")) {
+			ErrorModel em = superAdminService.removeAllUsers();
+			model.addAttribute("errors", em.getErrors());
+			model.addAttribute("message", em.getMessage());
+		} else {
+			model.addAttribute("errors", "Bestätigen Sie die Aktion");
+		}
+		return "super_admin_remove_all";
 	}
 }

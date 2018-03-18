@@ -78,7 +78,7 @@ public class Benutzer implements Serializable {
 	@OneToMany(mappedBy = "benutzer", fetch = FetchType.LAZY)
 	private List<Anzeige> anzeige;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Role> roles;
 
 	public Benutzer() {
