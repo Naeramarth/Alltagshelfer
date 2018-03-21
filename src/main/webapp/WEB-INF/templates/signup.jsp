@@ -23,7 +23,7 @@
                     <a href="<c:url value="/adverts/"/>">Übersicht</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="<c:url value="/"/>">Einloggen</a>
+                    <a href="<c:url value="/login/"/>">Einloggen</a>
                 </c:otherwise>
             </c:choose>
         </div>

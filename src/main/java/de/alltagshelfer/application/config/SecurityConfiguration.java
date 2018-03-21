@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/signup/", "/", "/css/**", "/fontello/**", "/img/**", "/assets/**", "/images/**").permitAll()
 				.antMatchers("/admin/**").hasAnyRole("ADMIN", "SUPERADMIN").antMatchers("/super/admin/**").hasRole("SUPERADMIN")
 				.anyRequest().authenticated()
-				.and().formLogin().loginPage("/login").permitAll().successForwardUrl("/secured/anzeigen").failureForwardUrl("/auth/error")
+				.and().formLogin().loginPage("/login").permitAll().successForwardUrl("/adverts").failureForwardUrl("/auth/error")
 				.and().logout().logoutUrl("/logout/").logoutSuccessUrl("/").invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID");
 	}
