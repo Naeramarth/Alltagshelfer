@@ -1,0 +1,20 @@
+header {
+	background-color: white;
+}
+
+menubar {
+	text-align: rigth;
+}
+
+html .menuitem {
+	text-align: center;
+}
+
+body {
+	text-align: table-cell;
+	vertical-align: middle;
+}
+
+column {
+	vertical-align: middle;
+}
