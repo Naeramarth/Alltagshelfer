@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Theory by TEMPLATED</title>
+		<title>Alltagshelfer</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="<c:url value="/assets/css/main.css"/>" />
@@ -19,7 +19,7 @@
 					<nav id="nav">
 						<a href="index.html">Home</a>
                     	<a href="<c:url value="/login"/>">Login</a>
-						<a href="generic.html">Generic</a>
+						<a href="<c:url value="/signup"/>Registrieren</a>
 						<a href="elements.html">Elements</a>
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
