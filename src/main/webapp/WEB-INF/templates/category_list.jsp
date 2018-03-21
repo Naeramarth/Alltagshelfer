@@ -16,7 +16,7 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/adverts/"/>">Übersicht</a>
+            <a href="<c:url value="/secured/anzeigen"/>">Übersicht</a>
         </div>
     </jsp:attribute>
 

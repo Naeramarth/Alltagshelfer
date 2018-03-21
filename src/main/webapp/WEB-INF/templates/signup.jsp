@@ -20,7 +20,7 @@
         <div class="menuitem">
             <c:choose>
                 <c:when test="${edit}">
-                    <a href="<c:url value="/adverts/"/>">Übersicht</a>
+                    <a href="<c:url value="/secured/anzeigen"/>">Übersicht</a>
                 </c:when>
                 <c:otherwise>
                     <a href="<c:url value="/"/>">Einloggen</a>
@@ -39,113 +39,113 @@
                     <c:choose>
                         <c:when test="${edit}">
                             <h1>Passwort ändern</h1>
-                            <label for="username">
+                            <label for="signup_username">
                                 Benutzername:
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="text" name="username" value="${signup_form.values["username"][0]}" readonly = "readonly">
+                                <input type="text" name="signup_username" value="${signup_form.values["signup_username"][0]}" readonly = "readonly">
                             </div>
                         </c:when>
                         <c:otherwise>
                             <h1>Logindaten</h1>
-                            <label for="username">
+                            <label for="signup_username">
                                 Benutzername:
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="text" name="susername" value="${signup_form.values["username"][0]}">
+                                <input type="text" name="signup_username" value="${signup_form.values["signup_username"][0]}">
                             </div>
                         </c:otherwise>
                     </c:choose>
 
                     <c:choose>
                         <c:when test="${edit}">
-                            <label for="password1">
+                            <label for="signup_password1">
                                 Passwort:
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="password1">
+                                <input type="password" name="signup_password1">
                             </div>
 
-                            <label for="password2">
+                            <label for="signup_password2">
                                 Passwort (wdh.):
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="password2">
+                                <input type="password" name="signup_password2">
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <label for="password1">
+                            <label for="signup_password1">
                                 Passwort:
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="password1">
+                                <input type="password" name="signup_password1">
                             </div>
 
-                            <label for="password2">
+                            <label for="signup_password2">
                                 Passwort (wdh.):
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="password2">
+                                <input type="password" name="signup_password2">
                             </div>
                         </c:otherwise>
                     </c:choose>
 
                     <h1>Anschrift</h1>
 
-                    <label for="name">
+                    <label for="signup_name">
                         Vor- und Nachname: 
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="name" value="${signup_form.values["name"][0]}">
+                        <input type="text" name="signup_name" value="${signup_form.values["signup_name"][0]}">
                     </div>
 
-                    <label for="anschrift">
+                    <label for="signup_strasse">
                         Straße und Hausnummer: 
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="anschrift" value="${signup_form.values["anschrift"][0]}">
+                        <input type="text" name="signup_strasse" value="${signup_form.values["signup_strasse"][0]}">
                     </div>
 
-                    <label for="plzort">
+                    <label for="signup_plzort">
                         Postleitzahl und Ort: 
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="postleitzahl" value="${signup_form.values["postleitzahl"][0]}">
-                        <input type="text" name="ort" value="${signup_form.values["ort"][0]}">
+                        <input type="text" name="signup_postleitzahl" value="${signup_form.values["signup_postleitzahl"][0]}">
+                        <input type="text" name="signup_ort" value="${signup_form.values["signup_ort"][0]}">
                     </div>
 
                     <h1>Kontaktdaten</h1>
 
-                    <label for="eMail">
+                    <label for="signup_eMail">
                         E-Mail: 
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="eMail" value="${signup_form.values["eMail"][0]}">
+                        <input type="text" name="signup_eMail" value="${signup_form.values["signup_eMail"][0]}">
                     </div>
 
-                    <label for="telefonnummer">
+                    <label for="signup_telefonnummer">
                         Telefonnummer: 
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="telefonnummer" value="${signup_form.values["telefonnummer"][0]}">
+                        <input type="text" name="signup_telefonnummer" value="${signup_form.values["signup_telefonnummer"][0]}">
                     </div>
                     <c:choose>
                         <c:when test="${edit}">
-                            <label for="oldpassword">
+                            <label for="signup_oldpassword">
                                 Änderungen mit Passwort bestätigen
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="oldpassword">
+                                <input type="password" name="signup_oldpassword">
                             </div>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">

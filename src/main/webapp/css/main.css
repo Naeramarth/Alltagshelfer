@@ -72,7 +72,6 @@ header, main {
 /* Menüzeile */
 #menubar .menuitem {
     display: inline-block;
-    padding-right: 2em;
 }
 
 /* Farben für Links */

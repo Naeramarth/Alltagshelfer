@@ -15,15 +15,10 @@ public class LoginController {
 
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 
-			return "redirect:/success";
+			return "redirect:/secured/anzeigen";
 		}
 
 		return "login";
-	}
-
-	@RequestMapping("/success")
-	public String success() {
-		return "authentication_success";
 	}
 
 	@RequestMapping("/auth/error")
