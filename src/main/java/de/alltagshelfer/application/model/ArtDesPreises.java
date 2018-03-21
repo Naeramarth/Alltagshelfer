@@ -10,13 +10,13 @@ package de.alltagshelfer.application.model;
  * @author FSche
  */
 public enum ArtDesPreises {
-    FESTPREIS, VERHANDLUNGSBASIS;
+    STÜNDLICH, PAUSCHALE;
     public String getLabel() {
         switch (this) {
-            case FESTPREIS:
-                return "Festpreis";
-            case VERHANDLUNGSBASIS:
-                return "Verhandlungsbasis";
+            case STÜNDLICH:
+                return "Stündlich";
+            case PAUSCHALE:
+                return "Pauschale";
             default:
                 return this.toString();
         }

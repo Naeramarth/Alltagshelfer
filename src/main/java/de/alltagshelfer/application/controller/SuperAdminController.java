@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import de.alltagshelfer.application.model.ErrorModel;
 import de.alltagshelfer.application.service.SuperAdminService;
@@ -30,8 +31,7 @@ public class SuperAdminController {
 	}
 
 	@PostMapping("/roles")
-	public String removeAdminPost(HttpServletRequest request, Model model) {
-		String username = request.getParameter("username");
+	public String removeAdminPost(Model model, @RequestParam String username) {
 		ErrorModel em = superAdminService.removeAdmin(username);
 		model.addAttribute("errors", em.getErrors());
 		model.addAttribute("message", em.getMessage());
@@ -44,9 +44,8 @@ public class SuperAdminController {
 	}
 
 	@PostMapping("/reset")
-	public String resetPost(HttpServletRequest request, Model model) {
-		String checked = request.getParameter("checkbox");
-		if (checked !=null && checked.equals("on")) {
+	public String resetPost(Model model, @RequestParam String checkbox) {
+		if (checkbox !=null && checkbox.equals("on")) {
 			ErrorModel em = superAdminService.reset();
 			model.addAttribute("errors", em.getErrors());
 			model.addAttribute("message", em.getMessage());
@@ -62,8 +61,7 @@ public class SuperAdminController {
 	}
 
 	@PostMapping("/remove")
-	public String removeUserPost(HttpServletRequest request, Model model) {
-		String username = request.getParameter("username");
+	public String removeUserPost(Model model, @RequestParam String username) {
 		ErrorModel em = superAdminService.removeUser(username);
 		model.addAttribute("errors", em.getErrors());
 		model.addAttribute("message", em.getMessage());
@@ -76,9 +74,8 @@ public class SuperAdminController {
 	}
 
 	@PostMapping("/remove/all")
-	public String removeAllUsersPost(HttpServletRequest request, Model model) {
-		String checked = request.getParameter("checkbox");
-		if (checked !=null && checked.equals("on")) {
+	public String removeAllUsersPost(Model model, @RequestParam String checkbox) {
+		if (checkbox !=null && checkbox.equals("on")) {
 			ErrorModel em = superAdminService.removeAllUsers();
 			model.addAttribute("errors", em.getErrors());
 			model.addAttribute("message", em.getMessage());
