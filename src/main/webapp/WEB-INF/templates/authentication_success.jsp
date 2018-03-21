@@ -14,6 +14,12 @@
         <link rel="stylesheet" href="<c:url value="/css/login.css"/>" />
     </jsp:attribute>
 
+    <jsp:attribute name="menu">
+        <div class="menuitem">
+            <a href="<c:url value="/adverts/"/>">Übersicht</a>
+        </div>
+    </jsp:attribute>
+
     <jsp:attribute name="content">
         <p>
             Sie haben sich erfolgreich eingeloggt!

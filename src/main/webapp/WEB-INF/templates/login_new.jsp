@@ -1,48 +1,61 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="utf-8">
-	<title>Daily UI - Day 1 Sign In</title>
+<meta charset="utf-8">
 
-	<!-- Google Fonts -->
-	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+<title>Daily UI - Day 1 Sign In</title>
+<!-- Google Fonts -->
 
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Custom Stylesheet -->
-	<link rel="stylesheet" href="css/style.css">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900'
+	rel='stylesheet' type='text/css'>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="css/animate.css">
+
+<!-- Custom Stylesheet -->
+
+<link rel="stylesheet" href="css/style.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </head>
 
 <body>
+
 	<div class="container">
+
 		<div class="top">
-			<h1 id="title" class="hidden"><span id="logo">Daily <span>UI</span></span></h1>
+
+			<h1 id="title" class="hidden">
+				<span id="logo">Daily <span>UI</span></span>
+			</h1>
+
 		</div>
+
 		<div class="login-box animated fadeInUp">
+
 			<div class="box-header">
+
 				<h2>Log In</h2>
+
 			</div>
-			<label for="username">Benutzername</label>
-			<br/>
-			<input type="text" id="username">
-			<br/>
-			<label for="password">Passwort</label>
-			<br/>
-			<input type="password" id="password">
-			<br/>
+			<label for="username">Benutzername</label> <br /> <input type="text"
+				id="username"> <br /> <label for="password">Passwort</label>
+			<br /> <input type="password" id="password"> <br />
 			<button type="submit">Login</button>
-			<br/>
-			<a href="#"><p class="small">Passwort vergessen?</p></a>
+			<br /> <a href="#"><p class="small">Passwort vergessen?</p></a>
 		</div>
+
 	</div>
+
 </body>
 
 <script>
-	$(document).ready(function () {
-    	$('#logo').addClass('animated fadeInDown');
-    	$("input:text:visible:first").focus();
+	$(document).ready(function() {
+		$('#logo').addClass('animated fadeInDown');
+		$("input:text:visible:first").focus();
 	});
 	$('#username').focus(function() {
 		$('label[for="username"]').addClass('selected');

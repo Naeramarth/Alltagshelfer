@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import de.alltagshelfer.application.model.FormValues;
 import de.alltagshelfer.application.service.SignUpService;
@@ -28,15 +29,15 @@ public class SignUpController {
 	}
 
 	@PostMapping("/signup")
-	public String signUpPost(HttpServletRequest request, Model model) {
-		List<String> error = new ArrayList<>();
+	public String signUpPost(HttpServletRequest request, Model model, @RequestParam String username,
+			@RequestParam String password1, @RequestParam String password2, @RequestParam String name,
+			@RequestParam String anschrift, @RequestParam String postleitzahl, @RequestParam String ort,
+			@RequestParam String land, @RequestParam String eMail, @RequestParam String telefonnummer) {
 
-		String username = request.getParameter("signup_username");
-		String password1 = request.getParameter("signup_password1");
-		String password2 = request.getParameter("signup_password2");
+		List<String> error = new ArrayList<>();
 		if (!password1.equals(password2))
 			error.add("Die Passwörter dürfen nicht unterschiedlich sein.");
-		String name = request.getParameter("signup_name");
+
 		String[] name_array = name.split(" ");
 		String vorname = "";
 		String nachname = "";
@@ -50,7 +51,6 @@ public class SignUpController {
 			nachname = name_array[name_array.length - 1];
 		}
 
-		String anschrift = request.getParameter("signup_strasse");
 		String[] anschrift_array = anschrift.split(" ");
 		String strasse = "";
 		String hausnummer = "";
@@ -63,21 +63,17 @@ public class SignUpController {
 			}
 			hausnummer = anschrift_array[anschrift_array.length - 1];
 		}
-		String postleitzahl = request.getParameter("signup_postleitzahl");
-		String ort = request.getParameter("signup_ort");
-		String land = request.getParameter("signup_land");
-		String eMail = request.getParameter("signup_eMail");
+
 		if (!new EmailValidator().isValid(eMail, null)) {
 			error.add("Die angegebene E-Mail Adresse ist nicht gültig");
 		}
-		String telefonnummer = request.getParameter("signup_telefonnummer");
 		List<String> errors = signUpService.signUp(username, password1, password2, vorname, nachname, strasse,
 				hausnummer, postleitzahl, ort, eMail, telefonnummer);
 		errors.addAll(error);
 		if (errors.isEmpty()) {
 			try {
 				request.login(username, password1);
-				return "redirect:/secured/anzeigen";
+				return "redirect:/adverts";
 			} catch (ServletException e) {
 				errors.add(e.getMessage());
 				System.out.println(e);
