@@ -76,7 +76,7 @@
 					<div class="flex flex-4">
 						<div class="box person">
 							<div class="image round">
-								<img src="images/.Babysitten.jpg" alt="Person 1" />
+								<img src="images/Babysitten.jpg" alt="Person 1" />
 							</div>
 							<h3>Kinderbetreuung</h3>
 							<p>Cipdum dolor</p>

@@ -2932,9 +2932,12 @@
 
 /* Banner */
 
+/* test test test  */
+
+
 	#banner {
 		padding: 12em 0 10em 0;
-		background-image: url('../../images/background.png');
+		background-image: url('../../images/Hintergund.jpg');
 		background-size: cover;
 		background-position: top;
 		background-attachment: fixed;
