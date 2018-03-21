@@ -18,9 +18,14 @@
 					<a href="index.html" class="logo">Theory</a>
 					<nav id="nav">
 						<a href="index.html">Home</a>
+<<<<<<< HEAD
                     	<a href="<c:url value="/login/"/>">Login</a>
 						<a href="<c:url value="/signup/"/>">Registrieren</a>
 						<a href="elements.html">Elements</a>
+=======
+                    	<a href="<c:url value="/login"/>">Login</a>
+						<a href="<c:url value="/signup"/>">Registrieren</a>
+>>>>>>> 38ea2ba42446a20f839b8fb042a70b93241834b4
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
@@ -28,8 +33,8 @@
 
 		<!-- Banner -->
 			<section id="banner">
-				<h1>Welcome to Theory</h1>
-				<p>A free responsive HTML5 website template by TEMPLATED.</p>
+				<h1>Alltagshelfer</h1>
+				<p>Alltagshelfer - besser kann ich´s auch nicht'</p>
 			</section>
 
 		<!-- One -->
@@ -38,7 +43,7 @@
 					<div class="flex flex-3">
 						<article>
 							<header>
-								<h3>Magna tempus sed amet<br /> aliquam veroeros</h3>
+								<h3>Wer sind wir?!<br /> aliquam veroeros</h3>
 							</header>
 							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
 							<footer>
@@ -47,7 +52,7 @@
 						</article>
 						<article>
 							<header>
-								<h3>Interdum lorem pulvinar<br /> adipiscing vitae</h3>
+								<h3>Was machen wir?!<br /> adipiscing vitae</h3>
 							</header>
 							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
 							<footer>
@@ -56,7 +61,7 @@
 						</article>
 						<article>
 							<header>
-								<h3>Libero purus magna sapien<br /> sed ullamcorper</h3>
+								<h3>Warum sollstest du dich uns anschliessen?<br /> sed ullamcorper</h3>
 							</header>
 							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
 							<footer>
