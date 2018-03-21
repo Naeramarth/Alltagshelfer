@@ -73,7 +73,7 @@ public class SignUpController {
 		if (errors.isEmpty()) {
 			try {
 				request.login(username, password1);
-				return "redirect:/secured/anzeigen";
+				return "redirect:/adverts";
 			} catch (ServletException e) {
 				errors.add(e.getMessage());
 				System.out.println(e);
