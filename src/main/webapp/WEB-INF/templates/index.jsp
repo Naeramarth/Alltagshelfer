@@ -18,8 +18,14 @@
 					<a href="index.html" class="logo">Theory</a>
 					<nav id="nav">
 						<a href="index.html">Home</a>
+<<<<<<< HEAD
+                    	<a href="<c:url value="/login/"/>">Login</a>
+						<a href="<c:url value="/signup/"/>">Registrieren</a>
+						<a href="elements.html">Elements</a>
+=======
                     	<a href="<c:url value="/login"/>">Login</a>
 						<a href="<c:url value="/signup"/>">Registrieren</a>
+>>>>>>> 38ea2ba42446a20f839b8fb042a70b93241834b4
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
