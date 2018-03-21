@@ -28,7 +28,7 @@
 		<!-- Banner -->
 			<section id="banner">
 				<h1>Alltagshelfer</h1>
-				<p>Alltagshelfer - besser kann ichÂ´s auch nicht'</p>
+				<p>Alltagshelfer - besser kann ich´s auch nicht'</p>
 			</section>
 
 		<!-- One -->

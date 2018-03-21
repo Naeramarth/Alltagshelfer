@@ -14,8 +14,6 @@ html {
     font-size: 14pt;
     background-color: rgb(250, 250, 250);
     color: rgb(47, 85, 151);
-    
-    /*background-image: url(../img/background.png);*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -34,14 +32,16 @@ header {
 	background: #e67403;;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     margin-bottom: 1rem;
-     position: fixed;
-  top: 0;
-  width: 100%
+    position: fixed;
+  	top: 0;
+  	width: 100%
 }
 
 header, main {
     padding: 1rem;
 }
+
+
 
 /* Titelzeile */
 #titlebar {
@@ -59,7 +59,11 @@ header, main {
     #titlebar {
         font-size: 160%;
     }
+    #page-login .page-head{
+	display:none;
+	}
 }
+
 
 #titlebar > * {
     display: inline-block;

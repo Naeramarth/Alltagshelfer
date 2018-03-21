@@ -1,13 +1,12 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
+<%@taglib tagdir="/WEB-INF/tags" prefix="template"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<title>Daily UI - Day 1 Sign In</title>
-<!-- Google Fonts -->
+<template:base>
 
-<link
+<!-- <link
 	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Lato:400,100,300,700,900'
 	rel='stylesheet' type='text/css'>
 
@@ -17,42 +16,47 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<jsp:attribute name="menu">
+        <div class="menuitem">
+            <a href="<c:url value="/signup/"/>">Registrieren</a>
+        </div>
+    </jsp:attribute>
 
-</head>
-
-<body>
-
-	<div class="container">
-
-		<div class="top">
-
-			<h1 id="title" class="hidden">
-				<span id="logo">Daily <span>UI</span></span>
-			</h1>
-
-		</div>
-
-		<div class="login-box animated fadeInUp">
-
-			<div class="box-header">
-
-				<h2>Log In</h2>
-
+	<jsp:attribute name="content">
+		<div class="container">
+			<c:url value="/login_new" var="loginProcessingUrl" />
+			<form action="${loginProcessingUrl}" method="post"
+				class="stacked">
+			<div class="top">	
+				<h1 id="title" class="hidden">
+					<span id="logo">Login <span>Login</span></span>
+				</h1>	
 			</div>
-			<label for="username">Benutzername</label> <br /> <input type="text"
-				id="username"> <br /> <label for="password">Passwort</label>
-			<br /> <input type="password" id="password"> <br />
-			<button type="submit">Login</button>
-			<br /> <a href="#"><p class="small">Passwort vergessen?</p></a>
+	
+			<div class="login-box animated fadeInUp">	
+				<div class="box-header">
+					<h2>Log In</h2>
+				</div>
+				<label for="username">Benutzername</label> 
+				<br /> 
+				<input type="text" id="username" name="username"> 
+				<br /> 
+				<label for="password">Passwort</label>
+				<br /> 
+				<input type="password" id="password" name="password"> 
+				<br />
+				<button class="icon-login" type="submit">Login</button>
+				<br /> 
+				<a href="#">
+					<p class="small">Passwort vergessen?</p>
+				</a>
+			</div>
+			</form>
 		</div>
+	  </jsp:attribute>
 
-	</div>
 
-</body>
-
-<script>
+<!--  
 	$(document).ready(function() {
 		$('#logo').addClass('animated fadeInDown');
 		$("input:text:visible:first").focus();
@@ -69,6 +73,6 @@
 	$('#password').blur(function() {
 		$('label[for="password"]').removeClass('selected');
 	});
-</script>
-
-</html>
+	-->
+	
+</template:base>
