@@ -43,6 +43,12 @@
                     <button class="icon-login" type="submit">
                         Einloggen
                     </button>
+                    
+                    <%-- Button zum Regestrieren --%>
+                    <a></a>
+                    <button class="icon-login" type="submit">
+                        Regestrieren
+                    </button>
                 </div>
             </form>
         </div>
