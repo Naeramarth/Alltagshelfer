@@ -15,9 +15,7 @@
 		<!-- Header -->
 			<header id="header">
 				<div class="inner">
-					<a href="index.html" class="logo">Theory</a>
 					<nav id="nav">
-						<a href="index.html">Home</a>
                     	<a href="<c:url value="/login"/>">Login</a>
 						<a href="<c:url value="/signup"/>"Registrieren</a>
 					</nav>
@@ -28,7 +26,7 @@
 		<!-- Banner -->
 			<section id="banner">
 				<h1>Alltagshelfer</h1>
-				<p>Alltagshelfer - besser kann ich´s auch nicht'</p>
+				<p>Besser kann ich´s auch nicht'</p>
 			</section>
 
 		<!-- One -->
@@ -37,31 +35,21 @@
 					<div class="flex flex-3">
 						<article>
 							<header>
-								<h3>Wer sind wir?!<br /> aliquam veroeros</h3>
+								<h3>Wer sind wir?!<br /> <br /></h3>
 							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
+							<p>Eine Gruppe junger Menschen, die die Gemeinschaft und die Nachbarschaftshilfe stärken wollen</p>
 						</article>
 						<article>
 							<header>
-								<h3>Was machen wir?!<br /> adipiscing vitae</h3>
+								<h3>Was machen wir?!<br /> <br /> </h3>
 							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
+							<p>Vermittlung kleinerer Tätigkeiten in der Nachbarschaft und unterstützen bei der Suche nach Hilfe im und ums Haus </p>
 						</article>
 						<article>
 							<header>
-								<h3>Warum sollstest du dich uns anschliessen?<br /> sed ullamcorper</h3>
+								<h3>Warum sollstest du dich uns anschliessen?<br /> </h3>
 							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-						</article>
+							<p>Du solltest dich anmelden falls du gerne anderen Menschen hilfst oder auch selbst die ein oder andere Hilfe benötigst</p>
 					</div>
 				</div>
 			</section>
@@ -70,8 +58,7 @@
 			<section id="two" class="wrapper style1 special">
 				<div class="inner">
 					<header>
-						<h2>Ipsum Feugiat</h2>
-						<p>Semper suscipit posuere apede</p>
+						<h2>Beispiele</h2>
 					</header>
 					<div class="flex flex-4">
 						<div class="box person">
@@ -79,68 +66,29 @@
 								<img src="images/Babysitten.jpg" alt="Person 1" />
 							</div>
 							<h3>Kinderbetreuung</h3>
-							<p>Cipdum dolor</p>
 						</div>
 						<div class="box person">
 							<div class="image round">
 								<img src="images/rasen_maehen.jpg" alt="Person 2" />
 							</div>
 							<h3>Gartenarbeit</h3>
-							<p>Vestibulum comm</p>
 						</div>
 						<div class="box person">
 							<div class="image round">
 								<img src="images/Handwerker.jpg" alt="Person 3" />
 							</div>
-							<h3>Handwerkliche TÃ¤tigkeiten</h3>
-							<p>Fusce pellentes</p>
+							<h3>Handwerkliche Tätigkeiten</h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
 								<img src="images/Einkaufen.jpg" alt="Person 4" />
 							</div>
-							<h3>EinkÃ¤ufe</h3>
-							<p>Praesent placer</p>
+							<h3>Einkäufe</h3>
 						</div>
 					</div>
 				</div>
 			</section>
 
-		<!-- Three -->
-			<section id="three" class="wrapper special">
-				<div class="inner">
-					<header class="align-center">
-						<h2>Nunc Dignissim</h2>
-						<p>Aliquam erat volutpat nam dui </p>
-					</header>
-					<div class="flex flex-2">
-						<article>
-							<div class="image fit">
-								<img src="images/pic01.jpg" alt="Pic 01" />
-							</div>
-							<header>
-								<h3>Praesent placerat magna</h3>
-							</header>
-							<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem ipsum.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-						</article>
-						<article>
-							<div class="image fit">
-								<img src="images/pic02.jpg" alt="Pic 02" />
-							</div>
-							<header>
-								<h3>Fusce pellentesque tempus</h3>
-							</header>
-							<p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna non comodo sodales tempus.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-						</article>
-					</div>
-				</div>
-			</section>
 
 		<!-- Footer -->
 			<footer id="footer">
