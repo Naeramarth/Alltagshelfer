@@ -29,6 +29,9 @@
             <a href="<c:url value="/adverts/"/>">Übersicht</a>
         </div>
         <div class="menuitem">
+            <a href="<c:url value="/super/admin/categories/"/>">Kategorien Verwalten</a>
+        </div>
+        <div class="menuitem">
             <a href="<c:url value="/super/admin/roles/"/>">Rollenverwaltung</a>
         </div>
         <div class="menuitem">
@@ -43,7 +46,7 @@
         <%-- Suchfilter --%>
         <form method="POST" class="horizontal" id="search">
 			<div class="checkbox">
-    			<input id="check" name="checkbox" type="checkbox">
+    			<input id="check" name="checkbox" type="checkbox" required="required">
     			<label for="checkbox">
       				Diese Operation löscht alle Benutzer außer dem Super Admin.
     			</label>

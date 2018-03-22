@@ -32,7 +32,7 @@ public class SignUpController {
 	public String signUpPost(HttpServletRequest request, Model model, @RequestParam String username,
 			@RequestParam String password1, @RequestParam String password2, @RequestParam String name,
 			@RequestParam String anschrift, @RequestParam String postleitzahl, @RequestParam String ort,
-			@RequestParam String land, @RequestParam String eMail, @RequestParam String telefonnummer) {
+			@RequestParam String eMail, @RequestParam String telefonnummer) {
 
 		List<String> error = new ArrayList<>();
 		if (!password1.equals(password2))

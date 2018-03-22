@@ -12,17 +12,32 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="template"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 
 <template:base>
-    <jsp:attribute name="title">
+	<jsp:attribute name="title">
         Übersicht
     </jsp:attribute>
 
-    <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
+	<jsp:attribute name="head">
+        <link rel="stylesheet"
+			href="<c:url value="/css/task_list.css"/>" />
     </jsp:attribute>
 
-    <jsp:attribute name="menu">
+	<jsp:attribute name="menu">
+        <c:choose>
+        <c:when test="${user}">
+        	<div class="menuitem">
+            	<a href="<c:url value="/adverts/"/>">Übersicht</a>
+        	</div>
+		</c:when>
+        <c:otherwise>
+        	<div class="menuitem">
+            	<a href="<c:url value="/adverts/user/"/>">Meine Anzeigen</a>
+        	</div>
+		</c:otherwise>
+        </c:choose>
+		
         <div class="menuitem">
             <a href="<c:url value="/advert/new/"/>">Angebot anlegen</a>
         </div>
@@ -32,16 +47,19 @@
         </div>
     </jsp:attribute>
 
-    <jsp:attribute name="content">
+	<jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="GET" class="horizontal" id="search">
-            <input type="text" name="text" value="${param.text}" placeholder="Beschreibung"/>
+            <input type="text" name="text" value="${param.text}"
+				placeholder="Beschreibung" />
+            <input type="hidden" name="user" value="${user}">
 
             <select name="category">
                 <option value="">Alle Kategorien</option>
 
                 <c:forEach items="${categories}" var="category">
-                    <option value="${category.id}" ${param.category == category.id ? 'selected' : ''}>
+                    <option value="${category.id}"
+						${param.category == category.id ? 'selected' : ''}>
                         <c:out value="${category.name}" />
                     </option>
                 </c:forEach>
@@ -69,7 +87,6 @@
                             <th>Benutzer</th>
                             <th>Preis</th>
                             <th>Preistyp</th>
-                            <th>Datum</th>
                             <th>Erstelldatum</th>
                             <th>Online Bis</th>
                         </tr>
@@ -77,27 +94,30 @@
                     <c:forEach items="${adverts}" var="advert">
                         <tr>
                             <td>
-                                <a href="<c:url value="/advert/${advert.id}/"/>">
-                                    <c:out value="${advert.titel}"/>
+                                <a
+								href="<c:url value="/advert/${advert.id}/"/>">
+                                    <c:out value="${advert.titel}" />
                                 </a>
                             </td>
                             <td>
-                                <c:out value="${advert.kategorie.name}"/>
+                                <c:out value="${advert.kategorie.name}" />
                             </td>
                             <td>
-                                <c:out value="${advert.benutzer.benutzername}"/>
+                                <c:out
+									value="${advert.benutzer.benutzername}" />
                             </td>
                             <td>
-                                <c:out value="${advert.preisvorstellung}"/>
+                                <c:out
+									value="${advert.preisvorstellung}" />
                             </td>
                             <td>
-                                <c:out value="${advert.artDesPreises}"/>
+                                <c:out value="${advert.artDesPreises}" />
                             </td>
                             <td>
-                                <c:out value="${advert.erstelldatum}"/>
+                                <tags:localDate date="${advert.erstelldatum}" />
                             </td>
                             <td>
-                                <c:out value="${advert.onlineBis}"/>
+                               <tags:localDate date="${advert.onlineBis}"/>
                             </td>
                         </tr>
                     </c:forEach>

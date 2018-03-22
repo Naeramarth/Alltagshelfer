@@ -29,6 +29,9 @@
             <a href="<c:url value="/adverts/"/>">Übersicht</a>
         </div>
         <div class="menuitem">
+            <a href="<c:url value="/super/admin/categories/"/>">Kategorien Verwalten</a>
+        </div>
+        <div class="menuitem">
             <a href="<c:url value="/super/admin/roles/"/>">Rollenverwaltung</a>
         </div>
         <div class="menuitem">
@@ -42,7 +45,7 @@
 	<jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="POST" class="horizontal" id="search">
-            <input type="text" name="username"
+            <input type="text" name="username" required="required"
 				placeholder="Benutzername" />
 	
             <button class="icon-pencil" type="submit">

@@ -54,7 +54,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="text" name="susername" value="${signup_form.values["username"][0]}">
+                                <input type="text" name="username" value="${signup_form.values["username"][0]}" required="required">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -81,7 +81,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="password1">
+                                <input type="password" name="password1" required="required">
                             </div>
 
                             <label for="password2">
@@ -89,7 +89,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="password2">
+                                <input type="password" name="password2" required="required">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -101,7 +101,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="name" value="${signup_form.values["name"][0]}">
+                        <input type="text" name="name" value="${signup_form.values["name"][0]}" required="required">
                     </div>
 
                     <label for="anschrift">
@@ -109,7 +109,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="anschrift" value="${signup_form.values["anschrift"][0]}">
+                        <input type="text" name="anschrift" value="${signup_form.values["anschrift"][0]}" required="required">
                     </div>
 
                     <label for="plzort">
@@ -117,8 +117,8 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="postleitzahl" value="${signup_form.values["postleitzahl"][0]}">
-                        <input type="text" name="ort" value="${signup_form.values["ort"][0]}">
+                        <input type="text" name="postleitzahl" value="${signup_form.values["postleitzahl"][0]}" required="required">
+                        <input type="text" name="ort" value="${signup_form.values["ort"][0]}" required="required">
                     </div>
 
                     <h1>Kontaktdaten</h1>
@@ -128,7 +128,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="eMail" value="${signup_form.values["eMail"][0]}">
+                        <input type="text" name="eMail" value="${signup_form.values["eMail"][0]}" required="required">
                     </div>
 
                     <label for="telefonnummer">
@@ -136,7 +136,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="telefonnummer" value="${signup_form.values["telefonnummer"][0]}">
+                        <input type="text" name="telefonnummer" value="${signup_form.values["telefonnummer"][0]}" required="required">
                     </div>
                     <c:choose>
                         <c:when test="${edit}">
@@ -145,7 +145,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="oldpassword">
+                                <input type="password" name="oldpassword" required="required">
                             </div>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">

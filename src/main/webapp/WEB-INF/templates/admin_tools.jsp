@@ -20,7 +20,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/admin/categories/"/>">Kategorien bearbeiten</a>
+            <a href="<c:url value="/admin/categories/"/>">Kategorien Hinzufügen</a>
         </div>
         
         <div class="menuitem">

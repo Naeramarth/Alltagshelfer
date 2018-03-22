@@ -6,7 +6,7 @@
 package de.alltagshelfer.application.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,10 +47,10 @@ public class Anzeige implements Serializable {
 	private String beschreibung;
 
 	@NotNull(message = "Das Datum darf nicht leer sein.")
-	private Date erstelldatum;
+	private LocalDate erstelldatum;
 
 	@NotNull(message = "Das Enddatum darf nicht leer sein.")
-	private Date onlineBis;
+	private LocalDate onlineBis;
 
 	@Column(scale = 2)
 	private long preisvorstellung;

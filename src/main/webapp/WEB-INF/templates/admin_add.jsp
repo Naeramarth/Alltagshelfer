@@ -30,7 +30,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/admin/categories/"/>">Kategorien bearbeiten</a>
+            <a href="<c:url value="/admin/categories/"/>">Kategorien Hinzufügen</a>
         </div>
         
         <div class="menuitem">
@@ -41,7 +41,7 @@
 	<jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="POST" class="horizontal" id="search">
-            <input type="text" name="username"
+            <input type="text" name="username" required="required"
 				placeholder="Benutzername" />
 	
             <button class="icon-pencil" type="submit">

@@ -30,13 +30,13 @@
                     <label for="username">
                         Benutzername:
                         <span class="required">*</span>
-                    </label> <input type="text" id="username" name="username" />
+                    </label> <input type="text" id="username" name="username" required="required"/>
 
                     <label for="password">
                         Passwort:
                         <span class="required">*</span>
                     </label> <input type="password" id="password"
-						name="password" />
+						name="password" required="required"/>
                     
                     <%-- Button zum Abschicken --%>
                     <a></a>
@@ -47,7 +47,7 @@
                     <%-- Button zum Regestrieren --%>
                     <a></a>
                     <button class="icon-login" type="submit">
-                        Regestrieren
+                        Registrieren
                     </button>
                 </div>
             </form>

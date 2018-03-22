@@ -1,10 +1,13 @@
 package de.alltagshelfer.application.service.impl;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import de.alltagshelfer.application.config.DatabaseInitializer;
 import de.alltagshelfer.application.entity.Benutzer;
+import de.alltagshelfer.application.entity.Kategorie;
 import de.alltagshelfer.application.entity.Role;
 import de.alltagshelfer.application.model.ErrorModel;
 import de.alltagshelfer.application.model.RoleName;
@@ -34,10 +38,13 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 	private AnzeigeRepository anzeigeRepo;
 
 	@Autowired
-	private KategorieRepository kategorieRepo;
+	private KategorieRepository catRepo;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private Validator validator;
 
 	@Override
 	public ErrorModel removeAdmin(String username) {
@@ -73,7 +80,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 		try {
 			repo.deleteAll();
 			anzeigeRepo.deleteAll();
-			kategorieRepo.deleteAll();
+			catRepo.deleteAll();
 			DatabaseInitializer.initialize(roleRepo, repo, passwordEncoder);
 			em.setMessage("Die Datenbank wurde erfolgreich zurückgesetzt");
 		} catch (Exception e) {
@@ -82,7 +89,6 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 		}
 		return em;
 	}
-
 
 	@Override
 	public ErrorModel removeUser(String username) {
@@ -122,6 +128,49 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 			em.addError("Beim Löschen aller Benutzer ist ein Fehler passiert");
 		}
 		return em;
+	}
+
+	@Override
+	public List<Kategorie> findAllCategories() {
+		return catRepo.findAllByOrderByNameAsc();
+	}
+
+	@Override
+	public List<String> createCategory(String name) {
+		List<String> errors = new ArrayList<>();
+		if (name == null || name.equals(""))
+			errors.add("Neuer Kategoriename darf nicht leer sein.");
+		Kategorie cat = new Kategorie(name);
+		Set<ConstraintViolation<Kategorie>> set = validator.validate(cat);
+		set.forEach((ConstraintViolation<Kategorie> violation) -> {
+			errors.add(violation.getMessage());
+		});
+		if (catRepo.findByName(name).isPresent())
+			errors.add("Es existiert bereits eine Kategorie mit diesem Namen.");
+		if (errors.isEmpty())
+			catRepo.save(cat);
+		return errors;
+	}
+
+	@Override
+	public List<String> deleteCategory(long[] ids) {
+		List<String> errors = new ArrayList<>();
+		if (ids == null) {
+			errors.add("Wählen Sie eine zu löschende Kategorie aus.");
+			ids = new long[0];
+		}
+		for (long id : ids) {
+			Optional<Kategorie> oCat = catRepo.findById(id);
+			if (!oCat.isPresent())
+				continue;
+			Kategorie cat;
+			if (!(cat = oCat.get()).getAnzeigen().isEmpty()) {
+				errors.add("Der Kategorie " + cat.getName() + " sind noch Anzeigen zugeordnet.");
+				continue;
+			}
+			catRepo.delete(cat);
+		}
+		return errors;
 	}
 
 }

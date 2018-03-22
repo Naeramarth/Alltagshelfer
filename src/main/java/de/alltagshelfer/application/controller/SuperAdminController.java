@@ -1,5 +1,8 @@
 package de.alltagshelfer.application.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import de.alltagshelfer.application.model.ErrorModel;
+import de.alltagshelfer.application.model.FormValues;
 import de.alltagshelfer.application.service.SuperAdminService;
 
 @Controller
@@ -83,5 +87,28 @@ public class SuperAdminController {
 			model.addAttribute("errors", "Bestätigen Sie die Aktion");
 		}
 		return "super_admin_remove_all";
+	}
+
+	@GetMapping("/categories")
+	public String category(Model model) {
+		model.addAttribute("categories", superAdminService.findAllCategories());
+		return "super_admin_category";
+	}
+
+	@PostMapping("/categories")
+	public String categoryPost(HttpServletRequest request, Model model, @RequestParam String action,
+			@RequestParam String name, @RequestParam(required = false) long[] category) {
+		List<String> errors = new ArrayList<>();
+		if (action == null)
+			action = "";
+		if (action.equals("create"))
+			errors.addAll(superAdminService.createCategory(name));
+		if (action.equals("delete"))
+			errors.addAll(superAdminService.deleteCategory(category));
+		FormValues fv = new FormValues();
+		fv.setValues(request.getParameterMap());
+		fv.setErrors(errors);
+		model.addAttribute("categories_form", fv);
+		return category(model);
 	}
 }

@@ -39,158 +39,134 @@
 					value="${other_user}">
 
                 <%-- Eingabefelder --%>
-                <label for="task_owner">Eigentümer:</label>
+                <label for="advert_owner">Eigentümer:</label>
                 <div class="side-by-side">
-                    <input type="text" name="task_owner"
-						value="${task_form.values[" task_owner"][0]}" readonly="readonly">
+                    <input type="text" name="advert_owner"
+						value="${advert.benutzer.benutzername}" readonly="readonly">
                 </div>
 
                 <c:choose>
                     <c:when test="${other_user}">
-                        <label for="task_category">Kategorie:</label>
+                        <label for="advert_category">Kategorie:</label>
                         <div class="side-by-side">
-                            <select name="task_category"
+                            <select name="advert_category"
 								disabled="disabled">
-                                <option value="">Keine Kategorie</option>
-
                                 <c:forEach items="${categories}"
 									var="category">
                                     <option value="${category.id}"
-										${task_form.values["task_category"][0] == category.id ? 'selected' : ''}>
+										${advert.kategorie.id == category.id ? 'selected' : ''}>
                                         <c:out value="${category.name}" />
                                     </option>
                                 </c:forEach>
                             </select>
                         </div>
 
-                        <label for="task_status">
-                            Art der Anzeige:
-                            <span class="required">*</span>
-                        </label>
-                        <div class="side-by-side margin">
-                            <select name="task_status"
-								disabled="disabled">
-                                <c:forEach items="${statuses}"
-									var="status">
-                                    <option value="${status}"
-										${task_form.values["task_status"][0] == status ? 'selected' : ''}>
-                                        <c:out value="${status.label}" />
-                                    </option>
-                                </c:forEach>
-                            </select>
-                        </div>
-
-                        <label for="task_short_text">
+                        <label for="advert_short_text">
                             Bezeichnung:
                             <span class="required">*</span>
                         </label>
                         <div class="side-by-side">
-                            <input type="text" name="task_short_text"
-								value="${task_form.values["
-								task_short_text"][0]}" readonly="readonly">
+                            <input type="text" name="advert_short_text"
+								value="${advert.titel}" readonly="readonly">
                         </div>
 
-                        <label for="task_long_text">
+                        <label for="advert_long_text">
                             Beschreibung:
                         </label>
                         <div class="side-by-side">
-                            <textarea name="task_long_text"
+                            <textarea name="advert_long_text"
 								readonly="readonly"><c:out
-									value="${task_form.values['task_long_text'][0]}" /></textarea>
+									value="${advert.beschreibung}" /></textarea>
                         </div>
 
-                        <label for="task_value">
+                        <label for="advert_pay">
                             Preis:
                         </label>
                         <div class="side-by-side">
-                            <select name="task_value_type"
+                            <select name="advert_pay_type"
 								disabled="disabled">
                                 <c:forEach items="${values}" var="value">
                                     <option value="${value}"
-										${task_form.values["task_value_type"][0] == value ? 'selected' : ''}>
+										${advert.artDesPreises == value ? 'selected' : ''}>
                                         <c:out value="${value.label}" />
                                     </option>
                                 </c:forEach>
                             </select>
-                            <input type="text" name="task_value"
-								value="${task_form.values['task_value'][0]}" readonly="readonly">
+                            <input type="number" name="advert_pay" required="required"
+								value="${(empty advert.preisvorstellung) ? '0' : advert.preisvorstellung}" readonly="readonly">
+                        </div>
+                        
+                    	<label for="advert_until">
+                    		Online Bis:
+                    	</label>
+                        <div class="side-by-side">
+                        	<input id=date type="date" name="advert_until" value="${advert.onlineBis}" readonly="readonly">
                         </div>
                     </c:when>
                     <c:otherwise>
-                        <label for="task_category">Kategorie:</label>
+                        <label for="advert_category">Kategorie:</label>
                         <div class="side-by-side">
-                            <select name="task_category">
-                                <option value="">Keine Kategorie</option>
-
+                            <select name="advert_category">
                                 <c:forEach items="${categories}"
 									var="category">
                                     <option value="${category.id}"
-										${task_form.values["task_category"][0] == category.id ? 'selected' : ''}>
+										${advert.kategorie.id == category.id ? 'selected' : ''}>
                                         <c:out value="${category.name}" />
                                     </option>
                                 </c:forEach>
                             </select>
                         </div>
 
-                        <label for="task_status">
-                            Art der Anzeige:
-                            <span class="required">*</span>
-                        </label>
-                        <div class="side-by-side margin">
-                            <select name="task_status">
-                                <c:forEach items="${statuses}"
-									var="status">
-                                    <option value="${status}"
-										${task_form.values["task_status"][0] == status ? 'selected' : ''}>
-                                        <c:out value="${status.label}" />
-                                    </option>
-                                </c:forEach>
-                            </select>
-                        </div>
-
-                        <label for="task_short_text">
+                        <label for="advert_short_text">
                             Bezeichnung:
                             <span class="required">*</span>
                         </label>
                         <div class="side-by-side">
-                            <input type="text" name="task_short_text"
-								value="${task_form.values["task_short_text"][0]}">
+                            <input type="text" name="advert_short_text" required="required"
+								value="${advert.titel}">
                         </div>
 
-                        <label for="task_long_text">
+                        <label for="advert_long_text">
                             Beschreibung:
                         </label>
                         <div class="side-by-side">
-                            <textarea name="task_long_text"><c:out
-									value="${task_form.values['task_long_text'][0]}" /></textarea>
+                            <textarea name="advert_long_text"><c:out
+									value="${advert.beschreibung}" /></textarea>
                         </div>
 
-                        <label for="task_value">
+                        <label for="advert_pay">
                             Preis:
                         </label>
                         <div class="side-by-side">
-                            <select name="task_value_type">
+                            <select name="advert_pay_type">
                                 <c:forEach items="${values}" var="value">
                                     <option value="${value}"
-										${task_form.values["task_value_type"][0] == value ? 'selected' : ''}>
+										${advert.artDesPreises == value ? 'selected' : ''}>
                                         <c:out value="${value.label}" />
                                     </option>
                                 </c:forEach>
                             </select>
-                            <input type="text" name="task_value"
-								value="${task_form.values['task_value'][0]}">
+                            <input type="number" name="advert_pay" required="required"
+								value="${(empty advert.preisvorstellung) ? '0' : advert.preisvorstellung}">
+                        </div>
+                        
+                    	<label for="advert_until">
+                    		Online Bis:
+                    	</label>
+                        <div class="side-by-side">
+                        	<input id=date type="date" name="advert_until" value="${advert.onlineBis}" required="required">
                         </div>
                     </c:otherwise>
                 </c:choose>
                 <c:if test="${edit}">
                     <label>Angelegt am:</label>
-                    <p>${task_form.values["task_date"][0]} ${task_form.values["task_time"][0]}</p>
+                    <p>${advert.erstelldatum}</p>
                     <label>Anbieter:</label>
-                    <span>${user.vorname} ${user.nachname}</span>
-                    <span>${user.strasse} ${user.hausnummer}</span>
-                    <span>${user.postleitzahl} ${user.ort}</span>
-                    <span>${user.telefonnummer}</span>
-                    <span>${user.email}</span>
+                    <span>${advert.benutzer.vorname} ${advert.benutzer.nachname}</span>
+                    <span>${advert.benutzer.strasse} ${advert.benutzer.hausnummer}</span>
+                    <span>${advert.benutzer.postleitzahl} ${advert.benutzer.ort}</span>
+                    <span>${advert.benutzer.telefonnummer}</span>
+                    <span>${advert.benutzer.email}</span>
                 </c:if>
 
                 <c:if test="${!other_user}">
@@ -208,14 +184,21 @@
                             </button>
                         </c:if>
                     
+				
+				
+				
+				
 				</c:if>
                 </div>
             </div>
 
+            
+            
+
             <%-- Fehlermeldungen --%>
-            <c:if test="${!empty task_form.errors}">
+            <c:if test="${!empty errors}">
                 <ul class="errors">
-                    <c:forEach items="${task_form.errors}" var="error">
+                    <c:forEach items="${errors}" var="error">
                         <li>${error}</li>
                         </c:forEach>
                 </ul>

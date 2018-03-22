@@ -37,12 +37,6 @@ public class AlltagshelferApplication extends SpringBootServletInitializer {
 		return tomcat;
 	}
 
-//	private Connector redirectConnector() {
-//		Connector connector = new Connector("AJP/1.3");
-//		connector.setPort(ajpPort);
-//		return connector;
-//	} 
-
 	@Bean(name = "passwordEncoder")
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();

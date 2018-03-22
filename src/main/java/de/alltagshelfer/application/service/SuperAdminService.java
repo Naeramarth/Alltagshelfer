@@ -1,5 +1,8 @@
 package de.alltagshelfer.application.service;
 
+import java.util.List;
+
+import de.alltagshelfer.application.entity.Kategorie;
 import de.alltagshelfer.application.model.ErrorModel;
 
 public interface SuperAdminService {
@@ -11,5 +14,11 @@ public interface SuperAdminService {
 	ErrorModel removeUser(String username);
 
 	ErrorModel removeAllUsers();
+
+	List<Kategorie> findAllCategories();
+
+	List<String> createCategory(String name);
+
+	List<String> deleteCategory(long[] ids);
 
 }

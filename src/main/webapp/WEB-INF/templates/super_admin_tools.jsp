@@ -19,6 +19,9 @@
             <a href="<c:url value="/adverts/"/>">Übersicht</a>
         </div>
         <div class="menuitem">
+            <a href="<c:url value="/super/admin/categories/"/>">Kategorien Verwalten</a>
+        </div>
+        <div class="menuitem">
             <a href="<c:url value="/super/admin/roles/"/>">Rollenverwaltung</a>
         </div>
         <div class="menuitem">

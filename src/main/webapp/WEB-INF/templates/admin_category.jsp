@@ -18,6 +18,14 @@
         <div class="menuitem">
             <a href="<c:url value="/adverts/"/>">Übersicht</a>
         </div>
+        
+        <div class="menuitem">
+            <a href="<c:url value="/admin/add"/>">Rollenverwaltung</a>
+        </div>
+        
+        <div class="menuitem">
+            <a href="<c:url value="/admin/remove"/>">Benutzer Löschen</a>
+        </div>
     </jsp:attribute>
 
     <jsp:attribute name="content">
@@ -28,7 +36,7 @@
             <%-- Feld zum Anlegen einer neuen Kategorie --%>
             <div class="column margin">
                 <label for="j_username">Neue Kategorie:</label>
-                <input type="text" name="name" value="${categories_form.values["name"][0]}">
+                <input type="text" name="name" value="${categories_form.values["name"][0]}" required="required">
 
                 <button type="submit" name="action" value="create" class="icon-pencil">
                     Anlegen
@@ -48,24 +56,19 @@
             <c:choose>
                 <c:when test="${empty categories}">
                     <p>
-                        Es sind noch keine Kategorien vorhanden. 🐏
+                        Es sind noch keine Kategorien vorhanden.
                     </p>
                 </c:when>
                 <c:otherwise>
                     <div>
                         <div class="margin">
                             <c:forEach items="${categories}" var="category">
-                                <input type="checkbox" name="category" id="${'category-'.concat(category.id)}" value="${category.id}" />
-                                <label for="${'category-'.concat(category.id)}">
+                                <label>
                                     <c:out value="${category.name}"/>
                                 </label>
                                 <br />
                             </c:forEach>
                         </div>
-
-                        <button type="submit" name="action" value="delete" class="icon-trash">
-                            Markierte löschen
-                        </button>
                     </div>
                 </c:otherwise>
             </c:choose>
