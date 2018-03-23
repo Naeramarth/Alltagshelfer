@@ -8,15 +8,18 @@
 <template:base>
 	<jsp:attribute name="title">
         <c:choose>
+            <c:when test="${other_user}">
+                ${advert.titel}
+            </c:when>
             <c:when test="${edit}">
-                Aufgabe bearbeiten
+                Anzeige bearbeiten
             </c:when>
             <c:otherwise>
-                Aufgabe anlegen
+                Anzeige anlegen
             </c:otherwise>
         </c:choose>
     </jsp:attribute>
-
+ 
 	<jsp:attribute name="head">
         <link rel="stylesheet"
 			href="<c:url value="/css/task_edit.css"/>" />
@@ -32,8 +35,6 @@
         <form method="post" class="stacked">
             <div class="column">
                 <%-- CSRF-Token --%>
-                <input type="hidden" name="csrf_token"
-					value="${csrf_token}">
                 <input type="hidden" name="edit" value="${edit}">
                 <input type="hidden" name="other_user"
 					value="${other_user}">
