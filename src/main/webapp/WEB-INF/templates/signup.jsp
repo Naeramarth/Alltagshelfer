@@ -42,7 +42,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="text" name="username" value="${signup_form.values["username"][0]}" readonly = "readonly">
+                                <input type="text" name="username" value="${username}" readonly = "readonly">
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -52,7 +52,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="text" name="username" value="${signup_form.values["username"][0]}" required="required">
+                                <input type="text" name="username" value="${username}" required="required">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -99,7 +99,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="name" value="${signup_form.values["name"][0]}" required="required">
+                        <input type="text" name="name" value="${name}" required="required">
                     </div>
 
                     <label for="anschrift">
@@ -107,7 +107,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="anschrift" value="${signup_form.values["anschrift"][0]}" required="required">
+                        <input type="text" name="anschrift" value="${anschrift}" required="required">
                     </div>
 
                     <label for="plzort">
@@ -115,8 +115,8 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="postleitzahl" value="${signup_form.values["postleitzahl"][0]}" required="required">
-                        <input type="text" name="ort" value="${signup_form.values["ort"][0]}" required="required">
+                        <input type="text" name="postleitzahl" value="${postleitzahl}" required="required">
+                        <input type="text" name="ort" value="${ort}" required="required">
                     </div>
 
                     <h1>Kontaktdaten</h1>
@@ -126,7 +126,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="eMail" value="${signup_form.values["eMail"][0]}" required="required">
+                        <input type="text" name="eMail" value="${eMail}" required="required">
                     </div>
 
                     <label for="telefonnummer">
@@ -134,7 +134,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="telefonnummer" value="${signup_form.values["telefonnummer"][0]}" required="required">
+                        <input type="text" name="telefonnummer" value="${telefonnummer}" required="required">
                     </div>
                     <c:choose>
                         <c:when test="${edit}">
@@ -143,7 +143,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="oldpassword" required="required">
+                                <input type="password" name="oldPassword" required="required">
                             </div>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">
@@ -164,9 +164,9 @@
                 </div>
 
                 <%-- Fehlermeldungen --%>
-                <c:if test="${!empty signup_form.errors}">
+                <c:if test="${!empty errors}">
                     <ul class="errors">
-                        <c:forEach items="${signup_form.errors}" var="error">
+                        <c:forEach items="${errors}" var="error">
                             <li>${error}</li>
                             </c:forEach>
                     </ul>

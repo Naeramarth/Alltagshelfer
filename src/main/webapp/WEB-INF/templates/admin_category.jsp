@@ -10,10 +10,6 @@
         Kategorien bearbeiten
     </jsp:attribute>
 
-    <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/category_list.css"/>" />
-    </jsp:attribute>
-
     <jsp:attribute name="menu">
         <div class="menuitem">
             <a href="<c:url value="/adverts/"/>">Übersicht</a>
@@ -30,13 +26,11 @@
 
     <jsp:attribute name="content">
         <form method="post" class="stacked">
-            <%-- CSRF-Token --%>
-            <input type="hidden" name="csrf_token" value="${csrf_token}">
 
             <%-- Feld zum Anlegen einer neuen Kategorie --%>
             <div class="column margin">
                 <label for="j_username">Neue Kategorie:</label>
-                <input type="text" name="name" value="${categories_form.values["name"][0]}" required="required">
+                <input type="text" name="name" value="${name}" required="required">
 
                 <button type="submit" name="action" value="create" class="icon-pencil">
                     Anlegen
@@ -44,9 +38,9 @@
             </div>
 
             <%-- Fehlermeldungen --%>
-            <c:if test="${!empty categories_form.errors}">
+            <c:if test="${!empty errors}">
                 <ul class="errors margin">
-                    <c:forEach items="${categories_form.errors}" var="error">
+                    <c:forEach items="${errors}" var="error">
                         <li>${error}</li>
                         </c:forEach>
                 </ul>

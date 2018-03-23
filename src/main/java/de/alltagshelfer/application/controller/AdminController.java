@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import de.alltagshelfer.application.model.ErrorModel;
-import de.alltagshelfer.application.model.FormValues;
 import de.alltagshelfer.application.service.AdminService;
 
 @Controller
@@ -36,6 +35,7 @@ public class AdminController {
 
 	@PostMapping("/add")
 	public String addAdminPost(Model model, @RequestParam String username) {
+		username = username.trim();
 		ErrorModel em = adminService.addAdmin(username);
 		model.addAttribute("errors", em.getErrors());
 		model.addAttribute("message", em.getMessage());
@@ -49,6 +49,7 @@ public class AdminController {
 
 	@PostMapping("/remove")
 	public String removeUsersPost(Model model, @RequestParam String username) {
+		username = username.trim();
 		ErrorModel em = adminService.removeUser(username);
 		model.addAttribute("errors", em.getErrors());
 		model.addAttribute("message", em.getMessage());
@@ -64,15 +65,15 @@ public class AdminController {
 	@PostMapping("/categories")
 	public String categoryPost(HttpServletRequest request, Model model, @RequestParam String action,
 			@RequestParam String name) {
+		name = name.trim();
 		List<String> errors = new ArrayList<>();
 		if (action == null)
 			action = "";
 		if (action.equals("create"))
 			errors.addAll(adminService.createCategory(name));
-		FormValues fv = new FormValues();
-		fv.setValues(request.getParameterMap());
-		fv.setErrors(errors);
-		model.addAttribute("categories_form", fv);
+		model.addAttribute("action", action);
+		model.addAttribute("name", name);
+		model.addAttribute("errors", errors);
 		return category(model);
 	}
 }

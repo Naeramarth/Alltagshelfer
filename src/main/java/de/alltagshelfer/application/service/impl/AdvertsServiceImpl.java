@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import de.alltagshelfer.application.entity.Anzeige;
 import de.alltagshelfer.application.entity.Benutzer;
 import de.alltagshelfer.application.entity.Kategorie;
+import de.alltagshelfer.application.model.AdvertModel;
 import de.alltagshelfer.application.model.AdvertsListModel;
 import de.alltagshelfer.application.model.ArtDesPreises;
 import de.alltagshelfer.application.repository.AnzeigeRepository;
@@ -105,7 +106,7 @@ public class AdvertsServiceImpl implements AdvertsService {
 	}
 
 	@Override
-	public List<String> saveAdvert(String benutzer, LocalDate advert_until, ArtDesPreises advert_pay_type,
+	public AdvertModel saveAdvert(String benutzer, LocalDate advert_until, ArtDesPreises advert_pay_type,
 			long advert_category, long advert_pay, String advert_short_text, String advert_long_text) {
 		List<String> errors = new ArrayList<>();
 		Anzeige adv = new Anzeige();
@@ -124,7 +125,7 @@ public class AdvertsServiceImpl implements AdvertsService {
 		});
 		if (errors.isEmpty())
 			advertRepo.save(adv);
-		return errors;
+		return new AdvertModel(errors, adv);
 	}
 
 	@Override
@@ -137,16 +138,20 @@ public class AdvertsServiceImpl implements AdvertsService {
 	}
 
 	@Override
-	public List<String> editAdvert(long id, ArtDesPreises advert_pay_type, long advert_pay, long advert_category,
-			LocalDate advert_until, String advert_short_text, String advert_long_text) {
+	public AdvertModel editAdvert(long id, ArtDesPreises advert_pay_type, long advert_pay, long advert_category,
+			LocalDate advert_until, String advert_short_text, String advert_long_text, String benutzername) {
 		List<String> errors = new ArrayList<>();
 		Anzeige adv = getAdvert(id);
-		adv.setArtDesPreises(advert_pay_type);
-		adv.setPreisvorstellung(advert_pay);
-		adv.setKategorie(categoryRepo.findById(advert_category).get());
-		adv.setOnlineBis(advert_until);
-		adv.setTitel(advert_short_text);
-		adv.setBeschreibung(advert_long_text);
+		if (adv.getBenutzer().getBenutzername().equals(benutzername)) {
+			adv.setArtDesPreises(advert_pay_type);
+			adv.setPreisvorstellung(advert_pay);
+			adv.setKategorie(categoryRepo.findById(advert_category).get());
+			adv.setOnlineBis(advert_until);
+			adv.setTitel(advert_short_text);
+			adv.setBeschreibung(advert_long_text);
+		} else {
+			errors.add("Diese Anzeige gehört nicht dem angemeldeten Benutzer");
+		}
 
 		Set<ConstraintViolation<Anzeige>> set = validator.validate(adv);
 		set.forEach((ConstraintViolation<Anzeige> violation) -> {
@@ -154,7 +159,7 @@ public class AdvertsServiceImpl implements AdvertsService {
 		});
 		if (errors.isEmpty())
 			advertRepo.save(adv);
-		return errors;
+		return new AdvertModel(errors, adv);
 	}
 
 }

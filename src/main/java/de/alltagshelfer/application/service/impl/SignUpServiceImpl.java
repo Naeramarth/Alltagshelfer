@@ -47,7 +47,7 @@ public class SignUpServiceImpl implements SignUpService {
 		s.add(roleRepo.findByRole(RoleName.ROLE_USER));
 		benutzer.setRoles(s);
 		Set<ConstraintViolation<Benutzer>> set = validator.validate(benutzer);
-		List<String> messages = new ArrayList<String>();
+		List<String> messages = new ArrayList<>();
 		set.forEach((ConstraintViolation<Benutzer> violation) -> {
 			messages.add(violation.getMessage());
 		});
@@ -57,6 +57,39 @@ public class SignUpServiceImpl implements SignUpService {
 		if (messages.isEmpty())
 			repo.save(benutzer);
 		return messages;
+	}
+
+	@Override
+	public List<String> edit(String benutzername, String oldPassword, String password1, String password2,
+			String vorname, String nachname, String strasse, String hausnummer, String postleitzahl, String ort,
+			String eMail, String telefonnummer) {
+		List<String> errors = new ArrayList<>();
+		Optional<Benutzer> o = repo.findByBenutzername(benutzername);
+		Benutzer benutzer = o.get();
+		if (!passwordEncoder.matches(oldPassword, benutzer.getPassword()))
+			errors.add("Das eingegebene alte Passwort ist nicht korrekt.");
+		benutzer.setEmail(eMail);
+		benutzer.setVorname(vorname);
+		benutzer.setNachname(nachname);
+		benutzer.setStrasse(strasse);
+		benutzer.setHausnummer(hausnummer);
+		benutzer.setPostleitzahl(postleitzahl);
+		benutzer.setOrt(ort);
+		benutzer.setTelefonnummer(telefonnummer);
+		if (!password1.equals(""))
+			benutzer.setPassword(passwordEncoder.encode(password1));
+		Set<ConstraintViolation<Benutzer>> set = validator.validate(benutzer);
+		set.forEach((ConstraintViolation<Benutzer> violation) -> {
+			errors.add(violation.getMessage());
+		});
+		if (errors.isEmpty())
+			repo.save(benutzer);
+		return errors;
+	}
+
+	@Override
+	public Benutzer getBenutzer(String name) {
+		return repo.findByBenutzername(name).get();
 	}
 
 }

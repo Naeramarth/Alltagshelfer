@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import de.alltagshelfer.application.entity.Anzeige;
 import de.alltagshelfer.application.entity.Benutzer;
+import de.alltagshelfer.application.model.AdvertModel;
 import de.alltagshelfer.application.model.AdvertsListModel;
 import de.alltagshelfer.application.model.ArtDesPreises;
 import de.alltagshelfer.application.service.AdvertsService;
@@ -38,6 +39,7 @@ public class AdvertsController {
 	@RequestMapping("/adverts")
 	public String adverts(Model model, @RequestParam(defaultValue = "") String text,
 			@RequestParam(required = false) String category) {
+		text = text.trim();
 		AdvertsListModel alm;
 		alm = service.getAdverts(text, category);
 		model.addAttribute("categories", alm.getCategories());
@@ -48,6 +50,7 @@ public class AdvertsController {
 	@RequestMapping("/adverts/user")
 	public String advertsUser(Model model, @RequestParam(defaultValue = "") String text,
 			@RequestParam(required = false) String category) {
+		text = text.trim();
 		AdvertsListModel alm;
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		alm = service.getAdverts(text, category, auth.getName());
@@ -72,18 +75,21 @@ public class AdvertsController {
 			@RequestParam long advert_category,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate advert_until,
 			@RequestParam String advert_short_text, @RequestParam String advert_long_text) {
+		advert_short_text = advert_short_text.trim();
+		advert_long_text = advert_long_text.trim();
 		List<String> errors = new ArrayList<>();
+		AdvertModel am = new AdvertModel();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (action == null)
 			action = "";
 		if (action.equals("save")) {
-			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-			errors.addAll(service.saveAdvert(auth.getName(), advert_until, advert_pay_type, advert_category, advert_pay,
-					advert_short_text, advert_long_text));
+			errors.addAll((am = service.saveAdvert(auth.getName(), advert_until, advert_pay_type, advert_category, advert_pay,
+					advert_short_text, advert_long_text)).getErrors());
 			if (errors.isEmpty())
 				return "redirect:/adverts";
 		}
-		model.addAllAttributes(request.getParameterMap());
 		model.addAttribute("errors", errors);
+		setValues(model, am.getAdvert(), auth);
 		return "adverts_edit";
 	}
 
@@ -102,12 +108,17 @@ public class AdvertsController {
 			@RequestParam long advert_category,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate advert_until,
 			@RequestParam String advert_short_text, @RequestParam String advert_long_text) {
+		advert_short_text = advert_short_text.trim();
+		advert_long_text = advert_long_text.trim();
 		List<String> errors = new ArrayList<>();
+		AdvertModel am = new AdvertModel();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (action == null)
 			action = "";
 		if (action.equals("save")) {
-			errors.addAll(service.editAdvert(id, advert_pay_type, advert_pay, advert_category, advert_until,
-					advert_short_text, advert_long_text));
+			errors.addAll((am = service.editAdvert(id, advert_pay_type, advert_pay, advert_category, advert_until,
+					advert_short_text, advert_long_text,
+					auth.getName())).getErrors());
 
 			if (errors.isEmpty())
 				return "redirect:/adverts";
@@ -116,16 +127,21 @@ public class AdvertsController {
 			service.deleteAdvert(id);
 			return "redirect:/adverts";
 		}
-		model.addAllAttributes(request.getParameterMap());
 		model.addAttribute("errors", errors);
+		model.addAttribute("edit", true);
+		setValues(model, am.getAdvert(), auth);
 		return "adverts_edit";
 	}
 
 	private void setValues(Model model, Anzeige adv, Authentication auth) {
-		Benutzer user = adv.getBenutzer();
 		model.addAttribute("advert", adv);
 		model.addAttribute("categories", service.getAllCategories());
 		model.addAttribute("values", ArtDesPreises.values());
+		otherUser(model, adv, auth);
+	}
+
+	private void otherUser(Model model, Anzeige adv, Authentication auth) {
+		Benutzer user = adv.getBenutzer();
 		boolean b = true;
 		if (auth.getName().equals(user.getBenutzername()))
 			b = false;

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import de.alltagshelfer.application.model.ErrorModel;
-import de.alltagshelfer.application.model.FormValues;
 import de.alltagshelfer.application.service.SuperAdminService;
 
 @Controller
@@ -36,6 +35,7 @@ public class SuperAdminController {
 
 	@PostMapping("/roles")
 	public String removeAdminPost(Model model, @RequestParam String username) {
+		username = username.trim();
 		ErrorModel em = superAdminService.removeAdmin(username);
 		model.addAttribute("errors", em.getErrors());
 		model.addAttribute("message", em.getMessage());
@@ -49,7 +49,7 @@ public class SuperAdminController {
 
 	@PostMapping("/reset")
 	public String resetPost(Model model, @RequestParam String checkbox) {
-		if (checkbox !=null && checkbox.equals("on")) {
+		if (checkbox != null && checkbox.equals("on")) {
 			ErrorModel em = superAdminService.reset();
 			model.addAttribute("errors", em.getErrors());
 			model.addAttribute("message", em.getMessage());
@@ -66,6 +66,7 @@ public class SuperAdminController {
 
 	@PostMapping("/remove")
 	public String removeUserPost(Model model, @RequestParam String username) {
+		username = username.trim();
 		ErrorModel em = superAdminService.removeUser(username);
 		model.addAttribute("errors", em.getErrors());
 		model.addAttribute("message", em.getMessage());
@@ -79,7 +80,7 @@ public class SuperAdminController {
 
 	@PostMapping("/remove/all")
 	public String removeAllUsersPost(Model model, @RequestParam String checkbox) {
-		if (checkbox !=null && checkbox.equals("on")) {
+		if (checkbox != null && checkbox.equals("on")) {
 			ErrorModel em = superAdminService.removeAllUsers();
 			model.addAttribute("errors", em.getErrors());
 			model.addAttribute("message", em.getMessage());
@@ -98,6 +99,7 @@ public class SuperAdminController {
 	@PostMapping("/categories")
 	public String categoryPost(HttpServletRequest request, Model model, @RequestParam String action,
 			@RequestParam String name, @RequestParam(required = false) long[] category) {
+		name = name.trim();
 		List<String> errors = new ArrayList<>();
 		if (action == null)
 			action = "";
@@ -105,10 +107,9 @@ public class SuperAdminController {
 			errors.addAll(superAdminService.createCategory(name));
 		if (action.equals("delete"))
 			errors.addAll(superAdminService.deleteCategory(category));
-		FormValues fv = new FormValues();
-		fv.setValues(request.getParameterMap());
-		fv.setErrors(errors);
-		model.addAttribute("categories_form", fv);
+		model.addAttribute("errors", errors);
+		model.addAttribute("action", action);
+		model.addAttribute("name", name);
 		return category(model);
 	}
 }
