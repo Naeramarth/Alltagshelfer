@@ -46,7 +46,7 @@
                     
                     <%-- Button zum Regestrieren --%>
                     <a></a>
-                    <button class="icon-login" type="submit">
+                    <button class="icon-login" href="<c:url value="/signup/"/>">
                         Registrieren
                     </button>
                 </div>

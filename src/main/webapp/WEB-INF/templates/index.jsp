@@ -16,8 +16,8 @@
 			<header id="header">
 				<div class="inner">
 					<nav id="nav">
-                    	<a href="<c:url value="/login"/>">Login</a>
-						<a href="<c:url value="/signup"/>">Registrieren</a>
+                    	<a href="<c:url value="/login/"/>">Login</a>
+						<a href="<c:url value="/signup/"/>">Registrieren</a>
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
