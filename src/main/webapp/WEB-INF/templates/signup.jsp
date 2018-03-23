@@ -8,9 +8,6 @@
 <c:set var="base_url" value="<%=request.getContextPath()%>" />
 
 <template:base>
-    <jsp:attribute name="title">
-        Registrierung
-    </jsp:attribute>
 
     <jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/login.css"/>" />
@@ -23,7 +20,8 @@
                     <a href="<c:url value="/adverts/"/>">Übersicht</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="<c:url value="/login/"/>">Einloggen</a>
+                    <a href="<c:url value="/login/"/>">Einloggen </a>
+            		<a href="<c:url value="/"/>"> Home</a>
                 </c:otherwise>
             </c:choose>
         </div>

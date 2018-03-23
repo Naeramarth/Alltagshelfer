@@ -6,9 +6,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <template:base>
-	<jsp:attribute name="title">
-        Login
-    </jsp:attribute>
 
 	<jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/login.css"/>" />
@@ -16,7 +13,7 @@
 
 	<jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/signup/"/>">Registrieren</a>
+            <a href="<c:url value="/"/>">Home</a>
         </div>
     </jsp:attribute>
 
@@ -27,6 +24,7 @@
 				class="stacked">
                 <div class="column">
                     <%-- Eingabefelder --%>
+                    <h1>Login</h1>
                     <label for="username">
                         Benutzername:
                         <span class="required">*</span>
@@ -45,10 +43,11 @@
                     </button>
                     
                     <%-- Button zum Regestrieren --%>
-                    <a></a>
-                    <button class="icon-login" type="submit">
+                    <a href="<c:url value="/signup/"/>">
+                    <button class="icon" type="submit">
                         Registrieren
                     </button>
+                    </a>
                 </div>
             </form>
         </div>

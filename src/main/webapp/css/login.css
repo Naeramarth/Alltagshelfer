@@ -1,9 +1,7 @@
 header {
 	background-color: white;
-}
-
-menubar {
-	text-align: rigth;
+	/*display: none;*/
+	box-shadow: unset;
 }
 
 html .menuitem {
@@ -11,10 +9,32 @@ html .menuitem {
 }
 
 body {
-	text-align: table-cell;
+	text-align: right;
 	vertical-align: middle;
+	background-color: white;
 }
 
-column {
+label, h1, input {
+	text-align: center;
+}
+
+.column {
 	vertical-align: middle;
+	margin: auto;
+	border-color: gray;
+	border-style: double;
+	padding: 10px;
+}
+
+.icon {
+	margin: auto;
+	width: 100%;
+}
+
+.container {
+	margin-bottom: 100%;
+}
+
+menutitem {
+	margin-right: 100px;
 }
