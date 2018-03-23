@@ -19,12 +19,13 @@ html {
     background-size: cover;
     box-sizing: border-box;
     height: 100%;
-    padding-top: 102px;
+    padding-top: 5.5em;
 }
 
 @media (max-width: 768px) {
     html {
         font-size: 12pt;
+        padding-top: 4em;
     }
 }
 

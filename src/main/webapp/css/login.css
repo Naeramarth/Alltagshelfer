@@ -1,5 +1,4 @@
 header {
-	background-color: white;
 	/*display: none;*/
 	box-shadow: unset;
 }
@@ -10,7 +9,6 @@ html .menuitem {
 
 body {
 	text-align: right;
-	vertical-align: middle;
 	background-color: white;
 }
 
@@ -19,7 +17,6 @@ label, h1, input {
 }
 
 .column {
-	vertical-align: middle;
 	margin: auto;
 	border-color: gray;
 	border-style: double;
