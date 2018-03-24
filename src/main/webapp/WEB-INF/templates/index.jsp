@@ -24,10 +24,13 @@
 			</header>
 
 		<!-- Banner -->
+		<div class="oben">
 			<section id="banner">
-				<h1>Alltagshelfer</h1>
-				<p>Besser kann ich´s auch nicht'</p>
+					<h1>Alltagshelfer</h1>
+					<p>Besser kann ich´s auch nicht'</p>
 			</section>
+							</div>
+			
 
 		<!-- One -->
 			<section id="one" class="wrapper">
@@ -35,21 +38,23 @@
 					<div class="flex flex-3">
 						<article>
 							<header>
-								<h3>Wer sind wir?!<br /> <br /></h3>
+								<h3>Wer sind wir?<br /> <br /></h3>
 							</header>
-							<p>Eine Gruppe junger Menschen, die die Gemeinschaft und die Nachbarschaftshilfe stärken wollen</p>
+							<p>Eine Gruppe junger Menschen, die die Gemeinschaft und die Nachbarschaftshilfe stärken wollen.</p>
 						</article>
 						<article>
 							<header>
-								<h3>Was machen wir?!<br /> <br /> </h3>
+								<h3>Was machen wir?<br /> <br /> </h3>
 							</header>
-							<p>Vermittlung kleinerer Tätigkeiten in der Nachbarschaft und unterstützen bei der Suche nach Hilfe im und ums Haus </p>
+							<p>Vermittlung kleinerer Tätigkeiten in der Nachbarschaft und Unterstützung bei der Suche nach Hilfe im und rund ums Haus. </p>
 						</article>
 						<article>
 							<header>
-								<h3>Warum sollstest du dich uns anschliessen?<br /> </h3>
+								<h3>Warum sollstest du dich uns anschließen?<br /> </h3>
 							</header>
-							<p>Du solltest dich anmelden falls du gerne anderen Menschen hilfst oder auch selbst die ein oder andere Hilfe benötigst</p>
+							<p>Du solltest dich anmelden, wenn du gerne anderen Menschen hilfst. </p>
+							<p>Auch du profitierst!</p>
+						
 					</div>
 				</div>
 			</section>
