@@ -2764,7 +2764,7 @@
 			padding: 0 0.75em;
 			color: inherit;
 			text-decoration: none;
-			font-size: .8em;
+			font-size: 1.3em;
 		}
 
 			#header a:hover {
@@ -2933,7 +2933,7 @@
 /* Banner */
 
 	#banner {
-		padding: 12em 0 10em 0;
+		padding: 8em 0 10em 0;
 		background-image: url('../../images/banner.jpg');
 		background-size: cover;
 		background-position: top;
@@ -2945,7 +2945,7 @@
 
 		#banner h1 {
 			font-size: 3.5em;
-			font-weight: 100;
+			font-weight: bold;
 			color: #fff;
 			line-height: 1em;
 			margin: 0 0 0.5em 0;
@@ -2953,9 +2953,10 @@
 		}
 
 		#banner p {
-			font-size: 1em;
-			color: rgba(255, 255, 255, 0.55);
+			font-size: 1.5em;
+			color: white;
 			margin-bottom: 1.75em;
+			font-weight: bold;
 		}
 
 		@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
