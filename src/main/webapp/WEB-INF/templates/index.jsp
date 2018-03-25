@@ -27,7 +27,7 @@
 		<div class="oben">
 			<section id="banner">
 					<h1>Alltagshelfer</h1>
-					<p>Besser kann ich´s auch nicht'</p>
+					<p>Besser kann ichï¿½s auch nicht'</p>
 			</section>
 							</div>
 			
@@ -40,17 +40,17 @@
 							<header>
 								<h3>Wer sind wir?<br /> <br /></h3>
 							</header>
-							<p>Eine Gruppe junger Menschen, die die Gemeinschaft und die Nachbarschaftshilfe stärken wollen.</p>
+							<p>Eine Gruppe junger Menschen, die die Gemeinschaft und die Nachbarschaftshilfe stï¿½rken wollen.</p>
 						</article>
 						<article>
 							<header>
 								<h3>Was machen wir?<br /> <br /> </h3>
 							</header>
-							<p>Vermittlung kleinerer Tätigkeiten in der Nachbarschaft und Unterstützung bei der Suche nach Hilfe im und rund ums Haus. </p>
+							<p>Vermittlung kleinerer Tï¿½tigkeiten in der Nachbarschaft und Unterstï¿½tzung bei der Suche nach Hilfe im und rund ums Haus. </p>
 						</article>
 						<article>
 							<header>
-								<h3>Warum sollstest du dich uns anschließen?<br /> </h3>
+								<h3>Warum sollstest du dich uns anschlieï¿½en?<br /> </h3>
 							</header>
 							<p>Du solltest dich anmelden, wenn du gerne anderen Menschen hilfst. </p>
 							<p>Auch du profitierst!</p>
@@ -58,7 +58,7 @@
 					</div>
 				</div>
 			</section>
-
+		<!-- Two -->
 		<!-- Two -->
 			<section id="two" class="wrapper style1 special">
 				<div class="inner">
@@ -82,13 +82,13 @@
 							<div class="image round">
 								<img src="images/Handwerker.jpg" alt="Person 3" />
 							</div>
-							<h3>Handwerkliche Tätigkeiten</h3>
+							<h3>Handwerkliche Tï¿½tigkeiten</h3>
 						</div>
 						<div class="box person">
 							<div class="image round">
 								<img src="images/Einkaufen.jpg" alt="Person 4" />
 							</div>
-							<h3>Einkäufe</h3>
+							<h3>Einkï¿½ufe</h3>
 						</div>
 					</div>
 				</div>
