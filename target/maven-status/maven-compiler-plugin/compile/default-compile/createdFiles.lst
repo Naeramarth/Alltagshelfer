@@ -9,9 +9,9 @@ de\alltagshelfer\application\controller\IndexController.class
 de\alltagshelfer\application\AlltagshelferApplication.class
 de\alltagshelfer\application\controller\SuperAdminController.class
 de\alltagshelfer\application\entity\Kategorie.class
+de\alltagshelfer\application\model\FormValues.class
 de\alltagshelfer\application\entity\Anzeige_.class
 de\alltagshelfer\application\entity\Benutzer.class
-de\alltagshelfer\application\model\AdvertModel.class
 de\alltagshelfer\application\service\AdvertsService.class
 de\alltagshelfer\application\service\impl\AdminServiceImpl.class
 de\alltagshelfer\application\config\SecurityConfiguration.class
