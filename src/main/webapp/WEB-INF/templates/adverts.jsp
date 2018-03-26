@@ -71,6 +71,9 @@
         </form>
 
         <%-- Gefundene Aufgaben --%>
+        <section>
+        <div class="advertising">></div>
+        <div class="list">
         <c:choose>
             <c:when test="${empty adverts}">
                 <p>
@@ -124,5 +127,8 @@
                 </table>
             </c:otherwise>
         </c:choose>
+        </div>
+        <div class="advertising"></div>
+        </section>
     </jsp:attribute>
 </template:base>
