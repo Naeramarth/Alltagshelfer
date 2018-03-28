@@ -178,11 +178,11 @@
 	                        </div>
 	                        
 	                    	<label for="advert_image">
-	                    		Laden Sie ein Bild hoch:
+	                    		Laden Sie ein Bild hoch (Maximal 1MB):
 	                    	</label>
 	                        <div class="side-by-side">
 	                        	<input id=image type="file"
-									name="advert_image">
+									name="advert_image" accept="image/jpeg, image/png">
 	                			<c:if test="${edit}">
 	                        	<button class="icon-pencil" type="submit"
 									name="action" value="delete_image">

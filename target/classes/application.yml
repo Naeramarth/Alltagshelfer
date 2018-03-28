@@ -44,5 +44,5 @@ spring:
    suffix: .jsp
  servlet:
   multipart:
-   max-file-size: 1MB
-   max-request-size : 1MB
+   max-file-size: 25MB
+   max-request-size : 25MB

@@ -126,11 +126,15 @@ public class AdvertsServiceImpl implements AdvertsService {
 			if (advert_image.getContentType().equals(MediaType.IMAGE_PNG_VALUE)
 					|| advert_image.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
 					|| advert_image.getContentType().equals(MediaType.APPLICATION_OCTET_STREAM_VALUE)) {
-				try {
-					adv.setBild(advert_image.getBytes());
-					adv.setBildName(advert_image.getOriginalFilename());
-				} catch (IOException e) {
-					e.printStackTrace();
+				if (advert_image.getSize() <= 1000000) { //1MB
+					try {
+						adv.setBild(advert_image.getBytes());
+						adv.setBildName(advert_image.getOriginalFilename());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}else {
+					errors.add("Das hochgeladene Bild darf nicht größer als 1 MB sein.");
 				}
 			} else {
 				errors.add("Der Datentyp des hochgeladenen Bilds wird nicht unterstützt.");
@@ -157,7 +161,8 @@ public class AdvertsServiceImpl implements AdvertsService {
 
 	@Override
 	public AdvertModel editAdvert(long id, ArtDesPreises advert_pay_type, long advert_pay, long advert_category,
-			LocalDate advert_until, String advert_short_text, String advert_long_text, String benutzername, MultipartFile advert_image) {
+			LocalDate advert_until, String advert_short_text, String advert_long_text, String benutzername,
+			MultipartFile advert_image) {
 		List<String> errors = new ArrayList<>();
 		Anzeige adv = getAdvert(id);
 		if (adv.getBenutzer().getBenutzername().equals(benutzername)) {
@@ -171,17 +176,21 @@ public class AdvertsServiceImpl implements AdvertsService {
 				if (advert_image.getContentType().equals(MediaType.IMAGE_PNG_VALUE)
 						|| advert_image.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
 						|| advert_image.getContentType().equals(MediaType.APPLICATION_OCTET_STREAM_VALUE)) {
-					try {
-						adv.setBild(advert_image.getBytes());
-						adv.setBildName(advert_image.getOriginalFilename());
-					} catch (IOException e) {
-						e.printStackTrace();
+					if (advert_image.getSize() <= 1000000) { //1MB
+						try {
+							adv.setBild(advert_image.getBytes());
+							adv.setBildName(advert_image.getOriginalFilename());
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					}else {
+						errors.add("Das hochgeladene Bild darf nicht größer als 1 MB sein.");
 					}
 				} else {
 					errors.add("Der Datentyp des hochgeladenen Bilds wird nicht unterstützt.");
 				}
 			}
-			
+
 		} else {
 			errors.add("Diese Anzeige gehört nicht dem angemeldeten Benutzer");
 		}

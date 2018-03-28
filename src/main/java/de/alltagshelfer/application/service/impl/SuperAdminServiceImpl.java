@@ -81,7 +81,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 			repo.deleteAll();
 			anzeigeRepo.deleteAll();
 			catRepo.deleteAll();
-			DatabaseInitializer.initialize(roleRepo, repo, passwordEncoder);
+			DatabaseInitializer.initialize(roleRepo, repo, catRepo, passwordEncoder);
 			em.setMessage("Die Datenbank wurde erfolgreich zurückgesetzt");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,7 +121,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 		ErrorModel em = new ErrorModel();
 		try {
 			repo.deleteAll();
-			DatabaseInitializer.initialize(roleRepo, repo, passwordEncoder);
+			DatabaseInitializer.initialize(roleRepo, repo, catRepo, passwordEncoder);
 			em.setMessage("Alle Benutzer wurden erfolgreich gelöscht");
 		} catch (Exception e) {
 			e.printStackTrace();
