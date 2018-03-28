@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import de.alltagshelfer.application.entity.Anzeige;
 import de.alltagshelfer.application.entity.Benutzer;
@@ -74,7 +75,8 @@ public class AdvertsController {
 			@RequestParam ArtDesPreises advert_pay_type, @RequestParam long advert_pay,
 			@RequestParam long advert_category,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate advert_until,
-			@RequestParam String advert_short_text, @RequestParam String advert_long_text) {
+			@RequestParam String advert_short_text, @RequestParam String advert_long_text,
+			@RequestParam(required = false) MultipartFile advert_image) {
 		advert_short_text = advert_short_text.trim();
 		advert_long_text = advert_long_text.trim();
 		List<String> errors = new ArrayList<>();
@@ -83,12 +85,13 @@ public class AdvertsController {
 		if (action == null)
 			action = "";
 		if (action.equals("save")) {
-			errors.addAll((am = service.saveAdvert(auth.getName(), advert_until, advert_pay_type, advert_category, advert_pay,
-					advert_short_text, advert_long_text)).getErrors());
+			errors.addAll((am = service.saveAdvert(auth.getName(), advert_until, advert_pay_type, advert_category,
+					advert_pay, advert_short_text, advert_long_text, advert_image)).getErrors());
 			if (errors.isEmpty())
 				return "redirect:/adverts";
 		}
 		model.addAttribute("errors", errors);
+		model.addAttribute("image_name", advert_image.getOriginalFilename());
 		setValues(model, am.getAdvert(), auth);
 		return "adverts_edit";
 	}
@@ -107,7 +110,8 @@ public class AdvertsController {
 			@RequestParam String action, @RequestParam ArtDesPreises advert_pay_type, @RequestParam long advert_pay,
 			@RequestParam long advert_category,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate advert_until,
-			@RequestParam String advert_short_text, @RequestParam String advert_long_text) {
+			@RequestParam String advert_short_text, @RequestParam String advert_long_text,
+			@RequestParam(required = false) MultipartFile advert_image) {
 		advert_short_text = advert_short_text.trim();
 		advert_long_text = advert_long_text.trim();
 		List<String> errors = new ArrayList<>();
@@ -117,8 +121,7 @@ public class AdvertsController {
 			action = "";
 		if (action.equals("save")) {
 			errors.addAll((am = service.editAdvert(id, advert_pay_type, advert_pay, advert_category, advert_until,
-					advert_short_text, advert_long_text,
-					auth.getName())).getErrors());
+					advert_short_text, advert_long_text, auth.getName(), advert_image)).getErrors());
 
 			if (errors.isEmpty())
 				return "redirect:/adverts";
@@ -127,8 +130,13 @@ public class AdvertsController {
 			service.deleteAdvert(id);
 			return "redirect:/adverts";
 		}
+		if (action.equals("delete_image")) {
+			service.deleteImage(id);
+			return "redirect:/advert/" + id;
+		}
 		model.addAttribute("errors", errors);
 		model.addAttribute("edit", true);
+		Anzeige adv;
 		setValues(model, am.getAdvert(), auth);
 		return "adverts_edit";
 	}

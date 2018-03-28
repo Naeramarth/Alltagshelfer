@@ -19,7 +19,7 @@
             </c:otherwise>
         </c:choose>
     </jsp:attribute>
- 
+
 	<jsp:attribute name="head">
         <link rel="stylesheet"
 			href="<c:url value="/css/task_edit.css"/>" />
@@ -32,14 +32,17 @@
     </jsp:attribute>
 
 	<jsp:attribute name="content">
-        <form method="post" class="stacked">
+        <form method="post" class="stacked"
+			enctype="multipart/form-data">
         	<section>
-        		<div class="advertising">></div>
+        		<div class="advertising"></div>
             	<div class="column">
                 	<%-- CSRF-Token --%>
                 	<input type="hidden" name="edit" value="${edit}">
                 	<input type="hidden" name="other_user"
 						value="${other_user}">
+						
+						
 
                 	<%-- Eingabefelder --%>
                 	<label for="advert_owner">Eigentümer:</label>
@@ -66,7 +69,6 @@
 	
 	                        <label for="advert_short_text">
 	                            Bezeichnung:
-	                            <span class="required">*</span>
 	                        </label>
 	                        <div class="side-by-side">
 	                            <input type="text" name="advert_short_text"
@@ -88,22 +90,30 @@
 	                        <div class="side-by-side">
 	                            <select name="advert_pay_type"
 									disabled="disabled">
-	                                <c:forEach items="${values}" var="value">
+	                                <c:forEach items="${values}"
+										var="value">
 	                                    <option value="${value}"
 											${advert.artDesPreises == value ? 'selected' : ''}>
 	                                        <c:out value="${value.label}" />
 	                                    </option>
 	                                </c:forEach>
 	                            </select>
-	                            <input type="number" name="advert_pay" required="required"
-									value="${(empty advert.preisvorstellung) ? '0' : advert.preisvorstellung}" readonly="readonly">
+	                            <input type="number" name="advert_pay"
+									required="required"
+									value="${(empty advert.preisvorstellung) ? '0' : advert.preisvorstellung}"
+									readonly="readonly">
+	                        </div>
+	                        
+	                        <div class="side-by-side">
+	                        	<img SRC="/image/${advert.id}  alt=""">
 	                        </div>
 	                        
 	                    	<label for="advert_until">
 	                    		Online Bis:
 	                    	</label>
 	                        <div class="side-by-side">
-	                        	<input id=date type="date" name="advert_until" value="${advert.onlineBis}" readonly="readonly">
+	                        	<input id=date type="date" name="advert_until"
+									value="${advert.onlineBis}" readonly="readonly">
 	                        </div>
 	                    </c:when>
 	                    <c:otherwise>
@@ -125,8 +135,8 @@
 	                            <span class="required">*</span>
 	                        </label>
 	                        <div class="side-by-side">
-	                            <input type="text" name="advert_short_text" required="required"
-									value="${advert.titel}">
+	                            <input type="text" name="advert_short_text"
+									required="required" value="${advert.titel}">
 	                        </div>
 	
 	                        <label for="advert_long_text">
@@ -142,23 +152,45 @@
 	                        </label>
 	                        <div class="side-by-side">
 	                            <select name="advert_pay_type">
-	                                <c:forEach items="${values}" var="value">
+	                                <c:forEach items="${values}"
+										var="value">
 	                                    <option value="${value}"
 											${advert.artDesPreises == value ? 'selected' : ''}>
 	                                        <c:out value="${value.label}" />
 	                                    </option>
 	                                </c:forEach>
 	                            </select>
-	                            <input type="number" name="advert_pay" required="required"
+	                            <input type="number" name="advert_pay"
+									required="required"
 									value="${(empty advert.preisvorstellung) ? '0' : advert.preisvorstellung}">
+	                        </div>
+	                        
+	                        <div class="side-by-side">
+	                        	<img SRC="/image/${advert.id}" alt="">
 	                        </div>
 	                        
 	                    	<label for="advert_until">
 	                    		Online Bis:
 	                    	</label>
 	                        <div class="side-by-side">
-	                        	<input id=date type="date" name="advert_until" value="${advert.onlineBis}" required="required">
+	                        	<input id=date type="date" name="advert_until"
+									value="${advert.onlineBis}" required="required">
 	                        </div>
+	                        
+	                    	<label for="advert_image">
+	                    		Laden Sie ein Bild hoch:
+	                    	</label>
+	                        <div class="side-by-side">
+	                        	<input id=image type="file"
+									name="advert_image">
+	                			<c:if test="${edit}">
+	                        	<button class="icon-pencil" type="submit"
+									name="action" value="delete_image">
+	                            	Momentanes Bild löschen
+	                        	</button>
+	                			</c:if>
+	                        </div>
+	                        
 	                    </c:otherwise>
 	                </c:choose>
 	                <c:if test="${edit}">

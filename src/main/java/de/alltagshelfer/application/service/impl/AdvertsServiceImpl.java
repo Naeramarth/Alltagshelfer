@@ -1,5 +1,6 @@
 package de.alltagshelfer.application.service.impl;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,9 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import de.alltagshelfer.application.entity.Anzeige;
 import de.alltagshelfer.application.entity.Benutzer;
@@ -107,7 +110,8 @@ public class AdvertsServiceImpl implements AdvertsService {
 
 	@Override
 	public AdvertModel saveAdvert(String benutzer, LocalDate advert_until, ArtDesPreises advert_pay_type,
-			long advert_category, long advert_pay, String advert_short_text, String advert_long_text) {
+			long advert_category, long advert_pay, String advert_short_text, String advert_long_text,
+			MultipartFile advert_image) {
 		List<String> errors = new ArrayList<>();
 		Anzeige adv = new Anzeige();
 		adv.setBenutzer(repo.findByBenutzername(benutzer).get());
@@ -118,6 +122,20 @@ public class AdvertsServiceImpl implements AdvertsService {
 		adv.setTitel(advert_short_text);
 		adv.setBeschreibung(advert_long_text);
 		adv.setErstelldatum(LocalDate.now());
+		if (advert_image != null) {
+			if (advert_image.getContentType().equals(MediaType.IMAGE_PNG_VALUE)
+					|| advert_image.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
+					|| advert_image.getContentType().equals(MediaType.APPLICATION_OCTET_STREAM_VALUE)) {
+				try {
+					adv.setBild(advert_image.getBytes());
+					adv.setBildName(advert_image.getOriginalFilename());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else {
+				errors.add("Der Datentyp des hochgeladenen Bilds wird nicht unterstützt.");
+			}
+		}
 
 		Set<ConstraintViolation<Anzeige>> set = validator.validate(adv);
 		set.forEach((ConstraintViolation<Anzeige> violation) -> {
@@ -139,7 +157,7 @@ public class AdvertsServiceImpl implements AdvertsService {
 
 	@Override
 	public AdvertModel editAdvert(long id, ArtDesPreises advert_pay_type, long advert_pay, long advert_category,
-			LocalDate advert_until, String advert_short_text, String advert_long_text, String benutzername) {
+			LocalDate advert_until, String advert_short_text, String advert_long_text, String benutzername, MultipartFile advert_image) {
 		List<String> errors = new ArrayList<>();
 		Anzeige adv = getAdvert(id);
 		if (adv.getBenutzer().getBenutzername().equals(benutzername)) {
@@ -149,6 +167,21 @@ public class AdvertsServiceImpl implements AdvertsService {
 			adv.setOnlineBis(advert_until);
 			adv.setTitel(advert_short_text);
 			adv.setBeschreibung(advert_long_text);
+			if (advert_image != null) {
+				if (advert_image.getContentType().equals(MediaType.IMAGE_PNG_VALUE)
+						|| advert_image.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
+						|| advert_image.getContentType().equals(MediaType.APPLICATION_OCTET_STREAM_VALUE)) {
+					try {
+						adv.setBild(advert_image.getBytes());
+						adv.setBildName(advert_image.getOriginalFilename());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				} else {
+					errors.add("Der Datentyp des hochgeladenen Bilds wird nicht unterstützt.");
+				}
+			}
+			
 		} else {
 			errors.add("Diese Anzeige gehört nicht dem angemeldeten Benutzer");
 		}
@@ -160,6 +193,14 @@ public class AdvertsServiceImpl implements AdvertsService {
 		if (errors.isEmpty())
 			advertRepo.save(adv);
 		return new AdvertModel(errors, adv);
+	}
+
+	@Override
+	public void deleteImage(long id) {
+		Anzeige adv = advertRepo.findById(id).get();
+		adv.setBild(null);
+		adv.setBildName(null);
+		advertRepo.save(adv);
 	}
 
 }

@@ -35,4 +35,6 @@ de\alltagshelfer\application\entity\Kategorie_.class
 de\alltagshelfer\application\model\ArtDesPreises.class
 de\alltagshelfer\application\service\impl\SignUpServiceImpl.class
 de\alltagshelfer\application\controller\LoginController.class
+de\alltagshelfer\application\config\ImageConfiguration.class
+de\alltagshelfer\application\controller\RestImageController.class
 de\alltagshelfer\application\model\AdvertsListModel.class

@@ -20,14 +20,12 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Type;
+
 import de.alltagshelfer.application.model.ArtDesPreises;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- *
- * @author FSche
- */
 @Entity
 @Data
 @EqualsAndHashCode(exclude = { "benutzer", "kategorie" })
@@ -58,6 +56,12 @@ public class Anzeige implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@NotNull
 	private ArtDesPreises artDesPreises;
+
+	@Lob
+	@Column(columnDefinition="blob")
+	private byte[] bild;
+
+	private String bildName;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NotNull(message = "Die Anzeige muss einem Benutzer zugeordnet werden.")

@@ -10,20 +10,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import de.alltagshelfer.application.entity.Benutzer;
+import de.alltagshelfer.application.entity.Kategorie;
 import de.alltagshelfer.application.entity.Role;
 import de.alltagshelfer.application.model.RoleName;
 import de.alltagshelfer.application.repository.BenutzerRepository;
+import de.alltagshelfer.application.repository.KategorieRepository;
 import de.alltagshelfer.application.repository.RoleRepository;
 
 @Component
 public class DatabaseInitializer {
 
 	@Autowired
-	public DatabaseInitializer(RoleRepository roleRepo, BenutzerRepository repo, PasswordEncoder passwordEncoder) {
-		initialize(roleRepo, repo,  passwordEncoder);
+	public DatabaseInitializer(RoleRepository roleRepo, BenutzerRepository repo, KategorieRepository catRepo,
+			PasswordEncoder passwordEncoder) {
+		initialize(roleRepo, repo, catRepo, passwordEncoder);
 	}
 
-	public static void initialize(RoleRepository roleRepo, BenutzerRepository repo, PasswordEncoder passwordEncoder) {
+	public static void initialize(RoleRepository roleRepo, BenutzerRepository repo, KategorieRepository catRepo,
+			PasswordEncoder passwordEncoder) {
 		List<Role> roleList = new ArrayList<>();
 
 		roleList.add(new Role(1, RoleName.ROLE_USER));
@@ -38,15 +42,27 @@ public class DatabaseInitializer {
 			for (Role r : roleList)
 				roleRepo.save(r);
 		}
-		
-		Benutzer benutzer = new Benutzer("Admin", "Super", "Admin", "Adminstr.", "1", "11111", "Karlsruhe", "admin@admin.de",
-				"0123456789");
+
+		Benutzer benutzer = new Benutzer("Admin", "Super", "Admin", "Adminstr.", "1", "11111", "Karlsruhe",
+				"admin@admin.de", "0123456789");
 		benutzer.setPassword(passwordEncoder.encode("123456"));
 		Set<Role> roles = new HashSet<>();
 		roles.addAll(roleList);
 		benutzer.setRoles(roles);
-		if(!repo.findByBenutzername("Admin").isPresent()) 
+		if (!repo.findByBenutzername("Admin").isPresent())
 			repo.save(benutzer);
+
+		Iterable<Kategorie> icats = catRepo.findAll();
+		ArrayList<Kategorie> cats = new ArrayList<>();
+		icats.forEach(cat -> {
+			cats.add(cat);
+		});
+		if (cats.size() < 3) {
+			catRepo.deleteAll();
+			catRepo.save(new Kategorie("Computer"));
+			catRepo.save(new Kategorie("Handwerk"));
+			catRepo.save(new Kategorie("Haushalt"));
+		}
 
 	}
 

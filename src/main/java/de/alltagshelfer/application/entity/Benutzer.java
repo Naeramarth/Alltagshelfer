@@ -22,10 +22,6 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- *
- * @author FSche
- */
 @Entity
 @EqualsAndHashCode(exclude = { "anzeige" })
 @Data
