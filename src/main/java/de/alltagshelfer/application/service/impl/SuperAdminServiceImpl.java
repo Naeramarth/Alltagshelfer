@@ -17,6 +17,7 @@ import de.alltagshelfer.application.config.DatabaseInitializer;
 import de.alltagshelfer.application.entity.Benutzer;
 import de.alltagshelfer.application.entity.Kategorie;
 import de.alltagshelfer.application.entity.Role;
+import de.alltagshelfer.application.model.AdminData;
 import de.alltagshelfer.application.model.ErrorModel;
 import de.alltagshelfer.application.model.RoleName;
 import de.alltagshelfer.application.repository.AnzeigeRepository;
@@ -45,6 +46,9 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 
 	@Autowired
 	private Validator validator;
+
+	@Autowired
+	private AdminData adminData;
 
 	@Override
 	public ErrorModel removeAdmin(String username) {
@@ -81,7 +85,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 			repo.deleteAll();
 			anzeigeRepo.deleteAll();
 			catRepo.deleteAll();
-			DatabaseInitializer.initialize(roleRepo, repo, catRepo, passwordEncoder);
+			DatabaseInitializer.initialize(roleRepo, repo, catRepo, passwordEncoder, adminData);
 			em.setMessage("Die Datenbank wurde erfolgreich zurückgesetzt");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,7 +125,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 		ErrorModel em = new ErrorModel();
 		try {
 			repo.deleteAll();
-			DatabaseInitializer.initialize(roleRepo, repo, catRepo, passwordEncoder);
+			DatabaseInitializer.initialize(roleRepo, repo, catRepo, passwordEncoder, adminData);
 			em.setMessage("Alle Benutzer wurden erfolgreich gelöscht");
 		} catch (Exception e) {
 			e.printStackTrace();

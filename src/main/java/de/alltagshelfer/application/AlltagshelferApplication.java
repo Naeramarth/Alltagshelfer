@@ -27,7 +27,6 @@ public class AlltagshelferApplication extends SpringBootServletInitializer {
 
 	@Bean
 	public ServletWebServerFactory servletContainer() {
-
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
 		if (tomcatAjpEnabled) {
 			tomcat.setProtocol("AJP/1.3");
