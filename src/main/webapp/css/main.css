@@ -46,7 +46,7 @@ header, main {
 
 /* Titelzeile */
 #titlebar {
-	background-image: url(../imgages/Logo.png);
+	background-image: url(../images/logo.png);
     background-repeat:no-repeat;
   	background-position:right;
   	background-size: 15% 100%;

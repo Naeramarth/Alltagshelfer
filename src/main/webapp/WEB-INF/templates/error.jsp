@@ -12,7 +12,7 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/"/>">Nochmal versuchen</a>
+            <a href="<c:url value="/adverts/"/>">Übersicht</a>
         </div>
     </jsp:attribute>
 

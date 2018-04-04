@@ -13,7 +13,7 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/"/>">Nochmal versuchen</a>
+            <a href="<c:url value="/login"/>">Nochmal versuchen</a>
         </div>
     </jsp:attribute>
 

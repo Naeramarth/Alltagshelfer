@@ -18,7 +18,7 @@
 
     <jsp:attribute name="content">
         <p>
-            Sie haben sich erfolgreich eingeloggt!
+            Sie sind bereits eingeloggt!
         </p>
     </jsp:attribute>
 </template:base>	
