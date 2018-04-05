@@ -1,36 +1,54 @@
 form.stacked > *{
     display: flex;
-    box-sizing: border-box;
-    width: 100%;
+    justify-content: space-between;
 }
 .column {
-	margin: auto;
 	display: block;
-	width: 100%;
-    max-width: 30em;
-    min-width: 12em;
-}
-.advertising {
-	min-width:5em;
-	width:10em;
 	margin-left: 1em;
 	margin-right: 1em;
-	border: 1px solid #000000;
-	background-color: white;
+	width: 30em;
+}
+.advertising {
+	min-width: 233px;
+	height: 584px;
+	background-image: url(../images/werbung_final.jpg);
+}
+@media (max-width: 890px ) {
+	.advertising {
+		min-width: 186.4px;
+		background-size: 186.4px 467.2px;
+		height: 467.2px;
+	}
 }
 @media (max-width:768px) {
 	form.stacked > *{
 		display:block;
 	}
 	.column {
-		width: 90%;
+		margin: auto;
+		width: auto;
 	}
 	.advertising {
 		margin: auto;
-		width: 100%;
-		height: 5em;
-		min-height: 3em;
+		width: 584px;
+		height: 233px;
+		background-size: 584px 233px;
 		margin-top: 1em;
 		margin-bottom: 1em;
+		background-image: url(../images/werbung_final_hori.jpg);
+	}
+}
+@media (max-width: 635px) {
+	.advertising {
+		width: 467.2px;
+		height: 186.4px;
+		background-size: 467.2px 186.4px;
+	}
+}
+@media (max-width: 515px) {
+	.advertising {
+		width: 350.4px;
+		height: 139.8px;
+		background-size: 350.4px 139.8px;
 	}
 }

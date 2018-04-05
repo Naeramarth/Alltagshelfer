@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Wed Mar 28 15:11:16 CEST 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0162-6cbb-e547-000005c59cf0 
-on database directory memory:C:\Users\FSche\Desktop\Alltagshelfer\myDb with class loader sun.misc.Launcher$AppClassLoader@6d06d69c 
-Loaded from file:/C:/Users/FSche/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
+Thu Apr 05 13:52:03 CEST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0162-95a6-3da6-0000086a8e08 
+on database directory memory:C:\Users\xcg1411\git\Alltagshelfer\myDb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/xcg1411/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_161-b12
-user.dir=C:\Users\FSche\Desktop\Alltagshelfer
-os.name=Windows 10
+java.runtime.version=1.8.0_72-b15
+user.dir=C:\Users\xcg1411\git\Alltagshelfer
+os.name=Windows 7
 os.arch=amd64
-os.version=10.0
+os.version=6.1
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

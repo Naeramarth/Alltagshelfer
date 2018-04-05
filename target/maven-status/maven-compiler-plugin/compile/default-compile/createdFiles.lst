@@ -28,6 +28,7 @@ de\alltagshelfer\application\service\AdminService.class
 de\alltagshelfer\application\service\impl\SuperAdminServiceImpl.class
 de\alltagshelfer\application\service\SuperAdminService.class
 de\alltagshelfer\application\entity\Role.class
+de\alltagshelfer\application\model\AdminData.class
 de\alltagshelfer\application\repository\AnzeigeRepository.class
 de\alltagshelfer\application\config\DatabaseInitializer.class
 de\alltagshelfer\application\config\CustomUserDetailsService.class

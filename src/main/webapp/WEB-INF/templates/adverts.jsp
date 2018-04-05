@@ -12,7 +12,7 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="template"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 
 <template:base>
 	<jsp:attribute name="title">
@@ -71,8 +71,10 @@
         </form>
 
         <%-- Gefundene Aufgaben --%>
-        <section>
-        <div class="advertising">></div>
+        <form method="post" class="stacked"
+			enctype="multipart/form-data">
+		<section>
+        <div class="advertising" id="links"></div>
         <div class="list">
         <c:choose>
             <c:when test="${empty adverts}">
@@ -98,7 +100,7 @@
                         <tr>
                             <td>
                                 <a
-								href="<c:url value="/advert/${advert.id}/"/>">
+											href="<c:url value="/advert/${advert.id}/"/>">
                                     <c:out value="${advert.titel}" />
                                 </a>
                             </td>
@@ -107,20 +109,22 @@
                             </td>
                             <td>
                                 <c:out
-									value="${advert.benutzer.benutzername}" />
+												value="${advert.benutzer.benutzername}" />
                             </td>
                             <td>
                                 <c:out
-									value="${advert.preisvorstellung}" />
+												value="${advert.preisvorstellung}" />
                             </td>
                             <td>
                                 <c:out value="${advert.artDesPreises}" />
                             </td>
                             <td>
-                                <tags:localDate date="${advert.erstelldatum}" />
+                                <tags:localDate
+												date="${advert.erstelldatum}" />
                             </td>
                             <td>
-                               <tags:localDate date="${advert.onlineBis}"/>
+                               <tags:localDate
+												date="${advert.onlineBis}" />
                             </td>
                         </tr>
                     </c:forEach>
@@ -128,7 +132,9 @@
             </c:otherwise>
         </c:choose>
         </div>
-        <div class="advertising"></div>
+        <div class="advertising" id="rechts"></div>
         </section>
-    </jsp:attribute>
+        </form>
+    
+	</jsp:attribute>
 </template:base>
