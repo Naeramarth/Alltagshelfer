@@ -25,9 +25,22 @@
 
 <jsp:invoke fragment="head" />
 </head>
+
+
 <body>
+
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/notify.js"></script>
+	<script>
+		$(function() {
+			if (window.navigator.userAgent.indexOf("MSIE ") > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+				$.notify("Internet Explorer wird nicht unterstützt! Wechseln Sie zu einem anderen Browser für ein besseres Erlebnis.", "warn");
+			}
+		})
+	</script>
 	<%-- Kopfbereich --%>
 	<header>
+
 		<%-- Titelzeile --%>
 		<div id="titlebar">
 			<div class="appname"></div>
