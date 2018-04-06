@@ -2456,7 +2456,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 	visibility: visible;
 }
 
-#navPanel a:not (.close ) {
+#navPanel a:not(.close) {
 	border-top: solid 1px rgba(255, 255, 255, 0.25);
 	color: #d4e0ef;
 	font-weight: 600;
@@ -2466,7 +2466,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 	font-weight: 300;
 }
 
-#navPanel a:not (.close ):first-child {
+#navPanel a:not(.close):first-child {
 	border: none;
 }
 
@@ -2516,7 +2516,7 @@ input[type="submit"].disabled, input[type="submit"]:disabled, input[type="reset"
 /* Banner */
 #banner {
 	padding: 8em 0 10em 0;
-	background-image: url('../../images/banner.jpg');
+	background-image: url('../../images/Hintergrund.jpeg');
 	background-size: cover;
 	background-position: top;
 	background-attachment: fixed;
