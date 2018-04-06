@@ -9,27 +9,31 @@
 
 <template:base>
 
-    <jsp:attribute name="head">
+	<jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/login.css"/>" />
     </jsp:attribute>
 
-    <jsp:attribute name="menu">
-        <div class="menuitem">
+	<jsp:attribute name="menu">
             <c:choose>
                 <c:when test="${edit}">
-                    <a href="<c:url value="/adverts/"/>">Übersicht</a>
+        			<div class="menuitem">
+                    	<a href="<c:url value="/adverts/"/>">Übersicht</a>
+        			</div>
                 </c:when>
                 <c:otherwise>
-                    <a href="<c:url value="/login/"/>">Einloggen </a>
-            		<a href="<c:url value="/"/>"> Home</a>
-                </c:otherwise>
+        			<div class="menuitem">
+                   		<a href="<c:url value="/login/"/>">Einloggen </a>
+					</div>
+        			<div class="menuitem">
+            			<a href="<c:url value="/"/>"> Home</a>
+        			</div>	
+				</c:otherwise>
             </c:choose>
-        </div>
     </jsp:attribute>
 
-    <jsp:attribute name="content">
+	<jsp:attribute name="content">
         <div class="container">
-            <form method="post" class="stacked">
+            <form method="post" class="stacked" style="width: 30em">
                 <div class="column">
                     <input type="hidden" name="edit" value="${edit}">
 
@@ -42,7 +46,8 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="text" name="username" value="${username}" readonly = "readonly">
+                                <input type="text" name="username"
+										value="${username}" readonly="readonly">
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -52,7 +57,8 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="text" name="username" value="${username}" required="required">
+                                <input type="text" name="username"
+										value="${username}" required="required">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -79,7 +85,8 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="password1" required="required">
+                                <input type="password" name="password1"
+										required="required">
                             </div>
 
                             <label for="password2">
@@ -87,7 +94,8 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="password2" required="required">
+                                <input type="password" name="password2"
+										required="required">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -99,7 +107,8 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="name" value="${name}" required="required">
+                        <input type="text" name="name" value="${name}"
+								required="required">
                     </div>
 
                     <label for="anschrift">
@@ -107,7 +116,8 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="anschrift" value="${anschrift}" required="required">
+                        <input type="text" name="anschrift"
+								value="${anschrift}" required="required">
                     </div>
 
                     <label for="plzort">
@@ -115,8 +125,10 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="postleitzahl" value="${postleitzahl}" required="required">
-                        <input type="text" name="ort" value="${ort}" required="required">
+                        <input type="text" name="postleitzahl"
+								value="${postleitzahl}" required="required">
+                        <input type="text" name="ort" value="${ort}"
+								required="required">
                     </div>
 
                     <h1>Kontaktdaten</h1>
@@ -126,7 +138,8 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="eMail" value="${eMail}" required="required">
+                        <input type="text" name="eMail" value="${eMail}"
+								required="required">
                     </div>
 
                     <label for="telefonnummer">
@@ -134,7 +147,8 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="telefonnummer" value="${telefonnummer}" required="required">
+                        <input type="text" name="telefonnummer"
+								value="${telefonnummer}" required="required">
                     </div>
                     <c:choose>
                         <c:when test="${edit}">
@@ -143,11 +157,13 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="side-by-side">
-                                <input type="password" name="oldPassword" required="required">
+                                <input type="password"
+										name="oldPassword" required="required">
                             </div>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">
-                                <button class="icon-pencil" type="submit">
+                                <button class="icon-pencil"
+										type="submit">
                                     Änderungen speichern
                                 </button>
                             </div>
@@ -155,14 +171,14 @@
                         <c:otherwise>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">
-                                <button class="icon-pencil" type="submit">
+                                <button class="icon-pencil"
+										type="submit">
                                     Registrieren
                                 </button>
                             </div>
                         </c:otherwise>
                     </c:choose>
                 </div>
-
                 <%-- Fehlermeldungen --%>
                 <c:if test="${!empty errors}">
                     <ul class="errors">

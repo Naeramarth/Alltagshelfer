@@ -54,6 +54,9 @@ public class SignUpServiceImpl implements SignUpService {
 		Optional<Benutzer> op = repo.findByBenutzername(username);
 		if (op.isPresent())
 			messages.add("Ein Benutzer mit diesem Benutzernamen existiert bereits");
+		op = repo.findByEmail(eMail);
+		if (op.isPresent())
+			messages.add("Ein Benutzer mit dieser E-Mail existiert bereits");
 		if (messages.isEmpty())
 			repo.save(benutzer);
 		return messages;

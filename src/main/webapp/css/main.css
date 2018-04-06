@@ -93,6 +93,7 @@ a:hover {
 .errors {
     margin-top: 1em;
     color: red;
+    text-align: left;
 }
 
 label {

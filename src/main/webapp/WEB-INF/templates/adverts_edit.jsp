@@ -105,7 +105,8 @@
 	                        </div>
 	                        
 	                        <div class="side-by-side">
-	                        	<img class="pic" SRC="/image/${advert.id}" onerror="this.src='/images/noimage.png';this.style.height='1px';this.className=''">
+	                        	<img class="pic" SRC="/image/${advert.id}"
+									onerror="this.src='/images/noimage.png';this.style.height='1px';this.className=''">
 	                        </div>
 	                        
 	                    	<label for="advert_until">
@@ -166,7 +167,8 @@
 	                        </div>
 	                        
 	                        <div class="side-by-side">
-	                        	<img class="pic" SRC="/image/${advert.id}" onerror="this.src='/images/noimage.png';this.style.height='1px';this.className=''">
+	                        	<img class="pic" SRC="/image/${advert.id}"
+									onerror="this.src='/images/noimage.png';this.style.height='1px';this.className=''">
 	                        </div>
 	                        
 	                    	<label for="advert_until">
@@ -185,7 +187,7 @@
 									name="advert_image" accept="image/jpeg, image/png">
 	                			<c:if test="${edit}">
 	                        	<button class="icon-pencil" type="submit"
-									name="action" value="delete_image">
+										name="action" value="delete_image">
 	                            	Momentanes Bild löschen
 	                        	</button>
 	                			</c:if>
@@ -220,9 +222,6 @@
 	                        </c:if>
 	                    </div>
 					</c:if>
-	            </div>
-	            <div class="advertising"></div>
-            </section>
             
 
             <%-- Fehlermeldungen --%>
@@ -233,6 +232,9 @@
                         </c:forEach>
                 </ul>
             </c:if>
+	            </div>
+	            <div class="advertising"></div>
+            </section>
         </form>
     </jsp:attribute>
 </template:base>

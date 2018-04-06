@@ -20,36 +20,37 @@
 	<jsp:attribute name="content">
         <div class="container">
 			<c:url value="/login" var="loginProcessingUrl" />
-            <form action="${loginProcessingUrl}" method="post"
-				class="stacked">
-                <div class="column">
-                    <%-- Eingabefelder --%>
-                    <h1>Login</h1>
-                    <label for="username">
-                        Benutzername:
-                        <span class="required">*</span>
-                    </label> <input type="text" id="username" name="username" required="required"/>
+                	<div class="column">
+            	<form action="${loginProcessingUrl}" method="post" class="stacked">
+                    	<%-- Eingabefelder --%>
+                    	<h1>Login</h1>
+                    	<label for="username">
+                        	Benutzername:
+                        	<span class="required">*</span>
+                   		</label> <input type="text" id="username" name="username"
+							required="required" />
 
-                    <label for="password">
-                        Passwort:
-                        <span class="required">*</span>
-                    </label> <input type="password" id="password"
-						name="password" required="required"/>
+                    	<label for="password">
+                        	Passwort:
+                        	<span class="required">*</span>
+                    	</label> <input type="password" id="password"
+							name="password" required="required" />
                     
-                    <%-- Button zum Abschicken --%>
-                    <a></a>
-                    <button class="icon-login" type="submit">
-                        Einloggen
-                    </button>
+                    	<%-- Button zum Abschicken --%>
+                    	<a></a>
+                    	<button class="icon-login" type="submit">
+                    	    Einloggen
+                    	</button>
+			</form>
                     
-                    <%-- Button zum Regestrieren --%>
-                    <a href="<c:url value="/signup/"/>">
-                    <button class="icon" type="submit">
-                        Registrieren
-                    </button>
-                    </a>
-                </div>
-            </form>
-        </div>
+                    	<%-- Button zum Registrieren --%>
+                    	<a href="<c:url value="/signup/"/>">
+                    		<button class="icon">
+                    	    Registrieren
+                    		</button>
+                    	</a>
+                	</div>
+			
+		</div>
     </jsp:attribute>
 </template:base>

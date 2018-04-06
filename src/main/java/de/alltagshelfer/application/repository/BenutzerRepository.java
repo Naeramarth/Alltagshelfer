@@ -12,6 +12,8 @@ public interface BenutzerRepository extends CrudRepository<Benutzer, Long> {
 
 	public Optional<Benutzer> findByBenutzername(String benutzername);
 
+	public Optional<Benutzer> findByEmail(String email);
+
 	@Modifying
 	@Transactional
 	public void deleteByBenutzername(String benutzername);
