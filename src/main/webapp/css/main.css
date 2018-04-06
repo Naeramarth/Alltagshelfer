@@ -25,7 +25,7 @@ html {
 @media (max-width: 768px) {
     html {
         font-size: 12pt;
-        padding-top: 4em;
+        padding-top: 4rem;
     }
 }
 

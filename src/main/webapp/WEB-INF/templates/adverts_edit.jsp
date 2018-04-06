@@ -105,7 +105,7 @@
 	                        </div>
 	                        
 	                        <div class="side-by-side">
-	                        	<img class="pic" SRC="/image/${advert.id}" onerror="this.src='/images/noimage.png'">
+	                        	<img class="pic" SRC="/image/${advert.id}" onerror="this.src='/images/noimage.png';this.style.height='1px';this.className=''">
 	                        </div>
 	                        
 	                    	<label for="advert_until">
@@ -166,7 +166,7 @@
 	                        </div>
 	                        
 	                        <div class="side-by-side">
-	                        	<img class="pic" SRC="/image/${advert.id}"  onerror="this.src='/images/noimage.png'; this.height='1'">
+	                        	<img class="pic" SRC="/image/${advert.id}" onerror="this.src='/images/noimage.png';this.style.height='1px';this.className=''">
 	                        </div>
 	                        
 	                    	<label for="advert_until">
