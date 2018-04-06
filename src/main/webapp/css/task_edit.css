@@ -8,6 +8,11 @@ form.stacked > *{
 	margin-right: 1em;
 	width: 30em;
 }
+
+.pic {
+	height: 100%;
+}
+
 .advertising {
 	min-width: 233px;
 	height: 584px;
