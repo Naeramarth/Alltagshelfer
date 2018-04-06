@@ -105,7 +105,7 @@
 	                        </div>
 	                        
 	                        <div class="side-by-side">
-	                        	<img class="pic" SRC="/image/${advert.id}  onerror="this.src='/images/noimage.png'">
+	                        	<img class="pic" SRC="/image/${advert.id}" onerror="this.src='/images/noimage.png'">
 	                        </div>
 	                        
 	                    	<label for="advert_until">
