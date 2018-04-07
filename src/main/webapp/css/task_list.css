@@ -18,6 +18,22 @@ td, th {
 	height: 			584px;
 	background-image: 	url(../images/werbung_final.jpg);
 }
+
+.search {
+	transition: border-color 0.2s ease-in-out;
+	background-color: transparent;
+	border: solid 1px #bebebe;
+	cursor: pointer;
+}
+
+.search:hover {
+	border-color: #747474;
+}
+
+#search > * {
+	margin-right: 3px;
+}
+
 @media (max-width: 1400px) {
 	.advertising {
 		min-width: 		186.4px;

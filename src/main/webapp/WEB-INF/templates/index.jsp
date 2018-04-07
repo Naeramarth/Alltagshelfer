@@ -54,11 +54,10 @@
 							</header>
 							<p>Du solltest dich anmelden, wenn du gerne anderen Menschen hilfst. </p>
 							<p>Auch du profitierst!</p>
-						
+						</article>
 					</div>
 				</div>
 			</section>
-		<!-- Two -->
 		<!-- Two -->
 			<section id="two" class="wrapper style1 special">
 				<div class="inner">
