@@ -47,7 +47,7 @@
 			<div class="checkbox">
     			<input id="check" name="checkbox" type="checkbox">
     			<label for="checkbox">
-      				Diese Operation löscht alle Daten außer den Rollen und den Superadmin
+      				Diese Operation löscht alle Daten außer den Rollen, den drei Standardkategorien und den Superadmin
     			</label>
   			</div>
   			<input type="submit" name="anmelden" class="button" id="btncheck" required="required"
