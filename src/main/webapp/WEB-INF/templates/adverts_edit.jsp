@@ -35,7 +35,7 @@
         <form method="post" class="stacked"
 			enctype="multipart/form-data">
         	<section>
-        		<div class="advertising"></div>
+				<a href="<c:url value="http://www.leftlovers.de/"/>" id="links" class="advertising"></a>
             	<div class="column">
                 	<%-- CSRF-Token --%>
                 	<input type="hidden" name="edit" value="${edit}">
@@ -233,7 +233,7 @@
                 </ul>
             </c:if>
 	            </div>
-	            <div class="advertising"></div>
+				<a href="<c:url value="http://www.leftlovers.de/"/>" id="rechts" class="advertising"></a>
             </section>
         </form>
     </jsp:attribute>

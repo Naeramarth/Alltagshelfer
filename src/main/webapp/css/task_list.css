@@ -21,6 +21,7 @@ td, th {
 
 @media (max-width: 1400px) {
 	.advertising {
+		display:		block;
 		min-width: 		186.4px;
 		background-size: 186.4px 467.2px;
 		height: 		467.2px;

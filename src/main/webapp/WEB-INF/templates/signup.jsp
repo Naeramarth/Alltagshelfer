@@ -22,11 +22,8 @@
                 </c:when>
                 <c:otherwise>
         			<div class="menuitem">
-                   		<a href="<c:url value="/login/"/>">Einloggen </a>
-					</div>
-        			<div class="menuitem">
             			<a href="<c:url value="/"/>"> Home</a>
-        			</div>	
+        			</div>
 				</c:otherwise>
             </c:choose>
     </jsp:attribute>

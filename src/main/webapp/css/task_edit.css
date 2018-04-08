@@ -35,6 +35,7 @@ form.stacked > *{
 		width: auto;
 	}
 	.advertising {
+		display: block;
 		margin: auto;
 		width: 584px;
 		height: 233px;

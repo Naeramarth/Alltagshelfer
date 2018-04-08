@@ -50,7 +50,7 @@
         <form method="post" class="stacked"
 			enctype="multipart/form-data">
 		<section>
-        <div class="advertising" id="links"></div>
+		<a href="<c:url value="http://www.leftlovers.de/"/>" id="links" class="advertising"></a>
         <div class="list">
         <c:choose>
             <c:when test="${empty adverts}">
@@ -108,7 +108,7 @@
             </c:otherwise>
         </c:choose>
         </div>
-        <div class="advertising" id="rechts"></div>
+		<a href="<c:url value="http://www.leftlovers.de/"/>" id="rechts" class="advertising"></a>
         </section>
         </form>
     

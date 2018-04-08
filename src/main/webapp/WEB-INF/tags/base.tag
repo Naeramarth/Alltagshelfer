@@ -66,6 +66,7 @@
         		</form>
 				</security:authorize>
         	</div>
+        	
         	<div class="logout">
         		<security:authorize access="isAuthenticated()">
 					<div class="menuitem">
@@ -73,6 +74,13 @@
 						</a>
 					</div>
 				</security:authorize>
+        		<c:choose>
+        			<c:when test="${edit}"> 
+        			<div class="menuitem">
+                   		<a href="<c:url value="/login/"/>" class="icon">Einloggen </a>
+					</div>
+				</c:when>
+				</c:choose>
 			</div>
 		</div>
 
