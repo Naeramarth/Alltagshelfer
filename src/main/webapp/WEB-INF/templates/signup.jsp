@@ -12,6 +12,13 @@
 	<jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/login.css"/>" />
     </jsp:attribute>
+		<jsp:attribute name="additional">
+		<c:if test="${!edit}">
+			<div class="menuitem">
+        		<a href="<c:url value="/login/"/>" class="icon">Einloggen </a>
+			</div>
+		</c:if>
+    	</jsp:attribute>
 
 	<jsp:attribute name="menu">
             <c:choose>
@@ -44,7 +51,7 @@
                             </label>
                             <div class="side-by-side">
                                 <input type="text" name="username"
-										value="${username}" readonly="readonly">
+									value="${username}" readonly="readonly">
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -55,7 +62,7 @@
                             </label>
                             <div class="side-by-side">
                                 <input type="text" name="username"
-										value="${username}" required="required">
+									value="${username}" required="required">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -83,7 +90,7 @@
                             </label>
                             <div class="side-by-side">
                                 <input type="password" name="password1"
-										required="required">
+									required="required">
                             </div>
 
                             <label for="password2">
@@ -92,7 +99,7 @@
                             </label>
                             <div class="side-by-side">
                                 <input type="password" name="password2"
-										required="required">
+									required="required">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -105,7 +112,7 @@
                     </label>
                     <div class="side-by-side">
                         <input type="text" name="name" value="${name}"
-								required="required">
+							required="required">
                     </div>
 
                     <label for="anschrift">
@@ -114,7 +121,7 @@
                     </label>
                     <div class="side-by-side">
                         <input type="text" name="anschrift"
-								value="${anschrift}" required="required">
+							value="${anschrift}" required="required">
                     </div>
 
                     <label for="plzort">
@@ -123,9 +130,9 @@
                     </label>
                     <div class="side-by-side">
                         <input type="text" name="postleitzahl"
-								value="${postleitzahl}" required="required">
+							value="${postleitzahl}" required="required">
                         <input type="text" name="ort" value="${ort}"
-								required="required">
+							required="required">
                     </div>
 
                     <h1>Kontaktdaten</h1>
@@ -136,7 +143,7 @@
                     </label>
                     <div class="side-by-side">
                         <input type="text" name="eMail" value="${eMail}"
-								required="required">
+							required="required">
                     </div>
 
                     <label for="telefonnummer">
@@ -145,7 +152,7 @@
                     </label>
                     <div class="side-by-side">
                         <input type="text" name="telefonnummer"
-								value="${telefonnummer}" required="required">
+							value="${telefonnummer}" required="required">
                     </div>
                     <c:choose>
                         <c:when test="${edit}">
@@ -155,12 +162,11 @@
                             </label>
                             <div class="side-by-side">
                                 <input type="password"
-										name="oldPassword" required="required">
+									name="oldPassword" required="required">
                             </div>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">
-                                <button class="icon"
-										type="submit">
+                                <button class="icon" type="submit">
                                     Änderungen speichern
                                 </button>
                             </div>
@@ -168,8 +174,7 @@
                         <c:otherwise>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">
-                                <button class="icon"
-										type="submit">
+                                <button class="icon" type="submit">
                                     Registrieren
                                 </button>
                             </div>

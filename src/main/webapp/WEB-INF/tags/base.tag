@@ -8,6 +8,7 @@
 
 <%@attribute name="title"%>
 <%@attribute name="head" fragment="true"%>
+<%@attribute name="additional" fragment="true"%>
 <%@attribute name="menu" fragment="true"%>
 <%@attribute name="content" fragment="true"%>
 
@@ -68,19 +69,13 @@
         	</div>
         	
         	<div class="logout">
+				<jsp:invoke fragment="additional" />
         		<security:authorize access="isAuthenticated()">
 					<div class="menuitem">
 						<a href="<c:url value="/logout/"/>" class="icon">Logout
 						</a>
 					</div>
 				</security:authorize>
-        		<c:choose>
-        			<c:when test="${edit}"> 
-        			<div class="menuitem">
-                   		<a href="<c:url value="/login/"/>" class="icon">Einloggen </a>
-					</div>
-				</c:when>
-				</c:choose>
 			</div>
 		</div>
 
