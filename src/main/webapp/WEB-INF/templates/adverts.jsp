@@ -15,9 +15,6 @@
 <%@taglib prefix="tags" tagdir="/WEB-INF/tags"%>
 
 <template:base>
-	<jsp:attribute name="title">
-        Übersicht
-    </jsp:attribute>
 
 	<jsp:attribute name="head">
         <link rel="stylesheet"
@@ -48,27 +45,6 @@
     </jsp:attribute>
 
 	<jsp:attribute name="content">
-        <%-- Suchfilter --%>
-        <form method="GET" class="horizontal" id="search">
-            <input type="text" name="text" value="${param.text}"
-				placeholder="Beschreibung" />
-            <input type="hidden" name="user" value="${user}">
-
-            <select name="category">
-                <option value="">Alle Kategorien</option>
-
-                <c:forEach items="${categories}" var="category">
-                    <option value="${category.id}"
-						${param.category == category.id ? 'selected' : ''}>
-                        <c:out value="${category.name}" />
-                    </option>
-                </c:forEach>
-            </select>
-
-            <button class="search" type="submit">
-                Suchen
-            </button>
-        </form>
 
         <%-- Gefundene Aufgaben --%>
         <form method="post" class="stacked"

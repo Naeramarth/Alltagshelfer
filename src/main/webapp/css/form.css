@@ -26,6 +26,31 @@ form.stacked .side-by-side > *:last-child {
     margin-right: 0;
 }
 
+/* Layout der Buttons */
+form.stacked > button.icon, button.icon {
+	-moz-transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+	padding: 0.2em 0.75em;
+	margin: 0.5em auto;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: bold;
+	font-size: 14pt;
+	border: solid 1px #bebebe;
+	background: transparent;
+	cursor: pointer;
+	display: block;
+}
+
+form.stacked > button.icon:hover, button.icon:hover {
+	border: solid 1px #000000;
+}
+
+.signup:hover {
+	text-decoration: none;
+}
+
 /* Feldbezeichner */
 form.stacked label {
     margin-top: 1em;

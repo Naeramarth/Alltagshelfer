@@ -35,22 +35,20 @@
                         	<span class="required">*</span>
                     	</label> <input type="password" id="password"
 							name="password" required="required" />
-                    
+
                     	<%-- Button zum Abschicken --%>
                     	<a></a>
-                    	<button class="icon-login" type="submit">
+                    	<button class="icon" type="submit">
                     	    Einloggen
                     	</button>
-			</form>
-                    
+				</form>
                     	<%-- Button zum Registrieren --%>
-                    	<a href="<c:url value="/signup/"/>">
+                    	<a href="<c:url value="/signup/"/>" class="signup">
                     		<button class="icon">
                     	    Registrieren
                     		</button>
                     	</a>
-                	</div>
-			
+        			</div>
 		</div>
     </jsp:attribute>
 </template:base>

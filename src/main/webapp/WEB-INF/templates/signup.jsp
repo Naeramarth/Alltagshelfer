@@ -162,7 +162,7 @@
                             </div>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">
-                                <button class="icon-pencil"
+                                <button class="icon"
 										type="submit">
                                     Änderungen speichern
                                 </button>
@@ -171,7 +171,7 @@
                         <c:otherwise>
                             <%-- Button zum Abschicken --%>
                             <div class="side-by-side">
-                                <button class="icon-pencil"
+                                <button class="icon"
 										type="submit">
                                     Registrieren
                                 </button>

@@ -186,7 +186,7 @@
 	                        	<input id=image type="file"
 									name="advert_image" accept="image/jpeg, image/png">
 	                			<c:if test="${edit}">
-	                        	<button class="icon-pencil" type="submit"
+	                        	<button class="icon" type="submit"
 										name="action" value="delete_image">
 	                            	Momentanes Bild löschen
 	                        	</button>
@@ -209,13 +209,13 @@
 	                <c:if test="${!other_user}">
 	                    <%-- Button zum Abschicken --%>
 	                    <div class="side-by-side">
-	                        <button class="icon-pencil" type="submit"
+	                        <button class="icon" type="submit"
 								name="action" value="save">
 	                            Sichern
 	                        </button>
 	
 	                        <c:if test="${edit}">
-	                            <button class="icon-trash" type="submit"
+	                            <button class="icon" type="submit"
 									name="action" value="delete">
 	                                Löschen
 	                            </button>

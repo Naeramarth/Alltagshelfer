@@ -44,7 +44,36 @@
 		<%-- Titelzeile --%>
 		<div id="titlebar">
 			<div class="appname"></div>
-			<div class="content">${title}</div>
+			<%-- Suchfilter --%>
+			<div class="searchbar">
+        		<security:authorize access="isAuthenticated()">
+        		<form method="get" class="horizontal" id="search" >
+            		<input type="hidden" name="user" value="${user}">
+            		<select name="category">
+                		<option value="">Alle Kategorien</option>
+                		<c:forEach items="${categories}" var="category">
+                    		<option value="${category.id}"
+								${param.category == category.id ? 'selected' : ''}>
+                       			<c:out value="${category.name}" />
+                    		</option>
+                		</c:forEach>
+            		</select>
+            		<input type="text" name="text" value="${param.text}"
+						placeholder="Beschreibung" id="suchfeld"/>
+            		<button class="search" type="submit">
+                		Suchen
+            		</button>
+        		</form>
+				</security:authorize>
+        	</div>
+        	<div class="logout">
+        		<security:authorize access="isAuthenticated()">
+					<div class="menuitem">
+						<a href="<c:url value="/logout/"/>" class="icon">Logout
+						</a>
+					</div>
+				</security:authorize>
+			</div>
 		</div>
 
 		<%-- Menü --%>
@@ -63,13 +92,7 @@
 				</div>
 			</security:authorize>
 
-			<security:authorize access="isAuthenticated()">
-				<div class="menuitem">
-					<a href="<c:url value="/logout/"/>" class="icon-logout">Logout
-						<security:authentication property="principal.username" />
-					</a>
-				</div>
-			</security:authorize>
+
 		</div>
 	</header>
 
