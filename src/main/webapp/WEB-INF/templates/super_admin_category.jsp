@@ -14,6 +14,18 @@
         <div class="menuitem">
             <a href="<c:url value="/adverts/"/>">Übersicht</a>
         </div>
+        <div class="menuitem">
+            <a href="<c:url value="/super/admin/roles/"/>">Rollenverwaltung</a>
+        </div>
+        <div class="menuitem">
+            <a href="<c:url value="/super/admin/remove/"/>">Benutzer Löschen</a>
+        </div>
+        <div class="menuitem">
+            <a href="<c:url value="/super/admin/remove/all/"/>">Alle Benutzer Löschen</a>
+        </div>
+        <div class="menuitem">
+            <a href="<c:url value="/super/admin/reset/"/>">Datenbank Reset</a>
+        </div>
     </jsp:attribute>
 
     <jsp:attribute name="content">
