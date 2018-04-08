@@ -47,7 +47,7 @@
 			<%-- Suchfilter --%>
 			<div class="searchbar">
         		<security:authorize access="isAuthenticated()">
-        		<form method="get" class="horizontal" id="search" >
+        		<form method="get" class="horizontal" id="search" action="/adverts/">
             		<input type="hidden" name="user" value="${user}">
             		<select name="category">
                 		<option value="">Alle Kategorien</option>
