@@ -61,8 +61,6 @@ public class Anzeige implements Serializable {
 	@Column(columnDefinition="blob")
 	private byte[] bild;
 
-	private String bildName;
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	@NotNull(message = "Die Anzeige muss einem Benutzer zugeordnet werden.")
 	private Benutzer benutzer;

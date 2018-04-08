@@ -129,7 +129,6 @@ public class AdvertsServiceImpl implements AdvertsService {
 				if (advert_image.getSize() <= 1000000) { //1MB
 					try {
 						adv.setBild(advert_image.getBytes());
-						adv.setBildName(advert_image.getOriginalFilename());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -179,7 +178,6 @@ public class AdvertsServiceImpl implements AdvertsService {
 					if (advert_image.getSize() <= 1000000) { //1MB
 						try {
 							adv.setBild(advert_image.getBytes());
-							adv.setBildName(advert_image.getOriginalFilename());
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -208,7 +206,6 @@ public class AdvertsServiceImpl implements AdvertsService {
 	public void deleteImage(long id) {
 		Anzeige adv = advertRepo.findById(id).get();
 		adv.setBild(null);
-		adv.setBildName(null);
 		advertRepo.save(adv);
 	}
 
