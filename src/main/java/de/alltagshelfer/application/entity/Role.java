@@ -27,9 +27,12 @@ public class Role {
 	private Set<Benutzer> benutzer;
 
 	public Role() {
-
 	}
 
+	public Role(RoleName rol) {
+		this.role=role;
+	}
+	
 	public Role(int roleId, RoleName role) {
 		this.roleId = roleId;
 		this.role = role;

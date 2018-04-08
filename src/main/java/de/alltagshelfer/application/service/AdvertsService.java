@@ -23,16 +23,17 @@ public interface AdvertsService {
 
 	List<Kategorie> getAllCategories();
 
-	List<String> deleteAdvert(long id);
-
 	AdvertModel saveAdvert(String string, LocalDate advert_until, ArtDesPreises advert_pay_type,
 			long advert_category, long advert_pay, String advert_short_text, String advert_long_text, MultipartFile advert_image);
 
 	Anzeige createInitialAdvert(String name);
 
-	AdvertModel editAdvert(long id, ArtDesPreises advert_pay_type, long advert_pay, long advert_category,
-			LocalDate advert_until, String advert_short_text, String advert_long_text, String string, MultipartFile advert_image);
-
 	void deleteImage(long id);
+
+	AdvertModel editAdvert(long id, ArtDesPreises advert_pay_type, long advert_pay, long advert_category,
+			LocalDate advert_until, String advert_short_text, String advert_long_text, String benutzername,
+			MultipartFile advert_image, boolean isAdmin);
+
+	AdvertModel deleteAdvert(long id, String benutzername, boolean isAdmin);
 
 }

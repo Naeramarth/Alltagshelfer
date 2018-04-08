@@ -18,9 +18,11 @@ import org.springframework.web.multipart.MultipartFile;
 import de.alltagshelfer.application.entity.Anzeige;
 import de.alltagshelfer.application.entity.Benutzer;
 import de.alltagshelfer.application.entity.Kategorie;
+import de.alltagshelfer.application.entity.Role;
 import de.alltagshelfer.application.model.AdvertModel;
 import de.alltagshelfer.application.model.AdvertsListModel;
 import de.alltagshelfer.application.model.ArtDesPreises;
+import de.alltagshelfer.application.model.RoleName;
 import de.alltagshelfer.application.repository.AnzeigeRepository;
 import de.alltagshelfer.application.repository.BenutzerRepository;
 import de.alltagshelfer.application.repository.KategorieRepository;
@@ -97,15 +99,26 @@ public class AdvertsServiceImpl implements AdvertsService {
 	}
 
 	@Override
-	public List<String> deleteAdvert(long id) {
+	public AdvertModel deleteAdvert(long id, String benutzername, boolean isAdmin) {
 		List<String> errors = new ArrayList<>();
-		try {
-			advertRepo.deleteById(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-			errors.add("Das Löschen ist fehlgeschlagen.");
+		Anzeige adv = new Anzeige();
+		Optional<Anzeige> o = advertRepo.findById(id);
+		if (o.isPresent()) {
+			adv = o.get();
+			if (adv.getBenutzer().getBenutzername().equals(benutzername) || isAdmin) {
+				try {
+					advertRepo.deleteById(id);
+				} catch (Exception e) {
+					e.printStackTrace();
+					errors.add("Das Löschen ist fehlgeschlagen.");
+				}
+			} else {
+				errors.add("Diese Anzeige gehört nicht dem angemeldeten Benutzer");
+			}
+		} else {
+			errors.add("Diese Anzeige existiert nicht mehr.");
 		}
-		return errors;
+		return new AdvertModel(errors, adv);
 	}
 
 	@Override
@@ -126,13 +139,13 @@ public class AdvertsServiceImpl implements AdvertsService {
 			if (advert_image.getContentType().equals(MediaType.IMAGE_PNG_VALUE)
 					|| advert_image.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
 					|| advert_image.getContentType().equals(MediaType.APPLICATION_OCTET_STREAM_VALUE)) {
-				if (advert_image.getSize() <= 1000000) { //1MB
+				if (advert_image.getSize() <= 1000000) { // 1MB
 					try {
 						adv.setBild(advert_image.getBytes());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-				}else {
+				} else {
 					errors.add("Das hochgeladene Bild darf nicht größer als 1 MB sein.");
 				}
 			} else {
@@ -161,10 +174,10 @@ public class AdvertsServiceImpl implements AdvertsService {
 	@Override
 	public AdvertModel editAdvert(long id, ArtDesPreises advert_pay_type, long advert_pay, long advert_category,
 			LocalDate advert_until, String advert_short_text, String advert_long_text, String benutzername,
-			MultipartFile advert_image) {
+			MultipartFile advert_image, boolean isAdmin) {
 		List<String> errors = new ArrayList<>();
 		Anzeige adv = getAdvert(id);
-		if (adv.getBenutzer().getBenutzername().equals(benutzername)) {
+		if (adv.getBenutzer().getBenutzername().equals(benutzername) || isAdmin) {
 			adv.setArtDesPreises(advert_pay_type);
 			adv.setPreisvorstellung(advert_pay);
 			adv.setKategorie(categoryRepo.findById(advert_category).get());
@@ -175,13 +188,14 @@ public class AdvertsServiceImpl implements AdvertsService {
 				if (advert_image.getContentType().equals(MediaType.IMAGE_PNG_VALUE)
 						|| advert_image.getContentType().equals(MediaType.IMAGE_JPEG_VALUE)
 						|| advert_image.getContentType().equals(MediaType.APPLICATION_OCTET_STREAM_VALUE)) {
-					if (advert_image.getSize() <= 1000000) { //1MB
+					if (advert_image.getSize() <= 1000000) { // 1MB
 						try {
-							adv.setBild(advert_image.getBytes());
+							if (advert_image.getSize() != 0)
+								adv.setBild(advert_image.getBytes());
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
-					}else {
+					} else {
 						errors.add("Das hochgeladene Bild darf nicht größer als 1 MB sein.");
 					}
 				} else {

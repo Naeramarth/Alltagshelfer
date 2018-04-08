@@ -121,14 +121,15 @@ public class AdvertsController {
 			action = "";
 		if (action.equals("save")) {
 			errors.addAll((am = service.editAdvert(id, advert_pay_type, advert_pay, advert_category, advert_until,
-					advert_short_text, advert_long_text, auth.getName(), advert_image)).getErrors());
+					advert_short_text, advert_long_text, auth.getName(), advert_image, isAdmin(auth))).getErrors());
 
 			if (errors.isEmpty())
 				return "redirect:/adverts";
 		}
 		if (action.equals("delete")) {
-			service.deleteAdvert(id);
-			return "redirect:/adverts";
+			errors.addAll((am = service.deleteAdvert(id, auth.getName(), isAdmin(auth))).getErrors());
+			if (errors.isEmpty())
+				return "redirect:/adverts";
 		}
 		if (action.equals("delete_image")) {
 			service.deleteImage(id);
@@ -154,12 +155,16 @@ public class AdvertsController {
 		if (auth.getName().equals(user.getBenutzername()))
 			b = false;
 		else
-			for (GrantedAuthority a : auth.getAuthorities()) {
-				if (a.getAuthority().equals("ROLE_ADMIN")) {
-					b = false;
-					break;
-				}
-			}
+			b = !isAdmin(auth);
 		model.addAttribute("other_user", b);
+	}
+	
+	private boolean isAdmin(Authentication auth) {
+		for (GrantedAuthority a : auth.getAuthorities()) {
+			if (a.getAuthority().equals("ROLE_ADMIN")) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
