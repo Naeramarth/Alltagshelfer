@@ -18,7 +18,7 @@
         		<a href="<c:url value="/login/"/>" class="icon">Einloggen </a>
 			</div>
 		</c:if>
-    	</jsp:attribute>
+    </jsp:attribute>
 
 	<jsp:attribute name="menu">
             <c:choose>

@@ -12,10 +12,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import de.alltagshelfer.application.entity.Benutzer;
+import de.alltagshelfer.application.entity.Kategorie;
+import de.alltagshelfer.application.service.KategorieService;
 import de.alltagshelfer.application.service.SignUpService;
 
 @Controller
@@ -23,6 +26,9 @@ public class SignUpController {
 
 	@Autowired
 	private SignUpService signUpService;
+	
+	@Autowired
+	private KategorieService catService;
 
 	@GetMapping("/signup")
 	public String signUp(Model model) {
@@ -192,6 +198,11 @@ public class SignUpController {
 		model.addAttribute("telefonnummer", telefonnummer);
 		model.addAttribute("errors", errors);
 		return "signup";
+	}
+	
+	@ModelAttribute("categories")
+	public List<Kategorie> getCategories() {
+	    return catService.getCategories();
 	}
 
 }

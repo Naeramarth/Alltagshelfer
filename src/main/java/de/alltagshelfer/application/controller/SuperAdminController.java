@@ -9,17 +9,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import de.alltagshelfer.application.entity.Kategorie;
 import de.alltagshelfer.application.model.ErrorModel;
+import de.alltagshelfer.application.service.KategorieService;
 import de.alltagshelfer.application.service.SuperAdminService;
 
 @Controller
 @RequestMapping("/super/admin")
 public class SuperAdminController {
 
+	@Autowired
+	private KategorieService catService;
+	
 	@Autowired
 	private SuperAdminService superAdminService;
 
@@ -92,7 +98,6 @@ public class SuperAdminController {
 
 	@GetMapping("/categories")
 	public String category(Model model) {
-		model.addAttribute("categories", superAdminService.findAllCategories());
 		return "super_admin_category";
 	}
 
@@ -111,5 +116,10 @@ public class SuperAdminController {
 		model.addAttribute("action", action);
 		model.addAttribute("name", name);
 		return category(model);
+	}
+	
+	@ModelAttribute("categories")
+	public List<Kategorie> getCategories() {
+	    return catService.getCategories();
 	}
 }

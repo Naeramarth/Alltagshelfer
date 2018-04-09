@@ -15,8 +15,6 @@ public interface SuperAdminService {
 
 	ErrorModel removeAllUsers();
 
-	List<Kategorie> findAllCategories();
-
 	List<String> createCategory(String name);
 
 	List<String> deleteCategory(long[] ids);

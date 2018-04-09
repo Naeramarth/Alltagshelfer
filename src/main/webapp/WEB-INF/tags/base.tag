@@ -49,7 +49,6 @@
 			<div class="searchbar">
         		<security:authorize access="isAuthenticated()">
         		<form method="get" class="horizontal" id="search" action="/adverts/">
-            		<input type="hidden" name="user" value="${user}">
             		<select name="category">
                 		<option value="">Alle Kategorien</option>
                 		<c:forEach items="${categories}" var="category">
@@ -71,7 +70,7 @@
         	<div class="logout">
 				<jsp:invoke fragment="additional" />
         		<security:authorize access="isAuthenticated()">
-					<div class="menuitem">
+					<div class="menuitem">	
 						<a href="<c:url value="/logout/"/>" class="icon">Logout
 						</a>
 					</div>

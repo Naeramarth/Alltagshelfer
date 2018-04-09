@@ -15,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,10 +24,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import de.alltagshelfer.application.entity.Anzeige;
 import de.alltagshelfer.application.entity.Benutzer;
+import de.alltagshelfer.application.entity.Kategorie;
 import de.alltagshelfer.application.model.AdvertModel;
-import de.alltagshelfer.application.model.AdvertsListModel;
 import de.alltagshelfer.application.model.ArtDesPreises;
 import de.alltagshelfer.application.service.AdvertsService;
+import de.alltagshelfer.application.service.KategorieService;
 
 @Controller
 public class AdvertsController {
@@ -36,15 +38,15 @@ public class AdvertsController {
 
 	@Autowired
 	private AdvertsService service;
+	
+	@Autowired
+	private KategorieService catService;
 
 	@RequestMapping("/adverts")
 	public String adverts(Model model, @RequestParam(defaultValue = "") String text,
 			@RequestParam(required = false) String category) {
 		text = text.trim();
-		AdvertsListModel alm;
-		alm = service.getAdverts(text, category);
-		model.addAttribute("categories", alm.getCategories());
-		model.addAttribute("adverts", alm.getAdverts());
+		model.addAttribute("adverts", service.getAdverts(text, category));
 		return "adverts";
 	}
 
@@ -52,12 +54,9 @@ public class AdvertsController {
 	public String advertsUser(Model model, @RequestParam(defaultValue = "") String text,
 			@RequestParam(required = false) String category) {
 		text = text.trim();
-		AdvertsListModel alm;
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		alm = service.getAdverts(text, category, auth.getName());
 		model.addAttribute("user", true);
-		model.addAttribute("categories", alm.getCategories());
-		model.addAttribute("adverts", alm.getAdverts());
+		model.addAttribute("adverts", service.getAdverts(text, category, auth.getName()));
 		return "adverts";
 	}
 
@@ -137,14 +136,17 @@ public class AdvertsController {
 		}
 		model.addAttribute("errors", errors);
 		model.addAttribute("edit", true);
-		Anzeige adv;
 		setValues(model, am.getAdvert(), auth);
 		return "adverts_edit";
+	}
+	
+	@ModelAttribute("categories")
+	public List<Kategorie> getCategories() {
+	    return catService.getCategories();
 	}
 
 	private void setValues(Model model, Anzeige adv, Authentication auth) {
 		model.addAttribute("advert", adv);
-		model.addAttribute("categories", service.getAllCategories());
 		model.addAttribute("values", ArtDesPreises.values());
 		otherUser(model, adv, auth);
 	}

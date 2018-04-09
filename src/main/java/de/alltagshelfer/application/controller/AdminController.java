@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import de.alltagshelfer.application.entity.Kategorie;
 import de.alltagshelfer.application.model.ErrorModel;
 import de.alltagshelfer.application.service.AdminService;
+import de.alltagshelfer.application.service.KategorieService;
 
 @Controller
 @RequestMapping("/admin")
@@ -22,6 +25,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private KategorieService catService;
 
 	@RequestMapping("/")
 	public String adminTools() {
@@ -75,5 +81,10 @@ public class AdminController {
 		model.addAttribute("name", name);
 		model.addAttribute("errors", errors);
 		return category(model);
+	}
+	
+	@ModelAttribute("categories")
+	public List<Kategorie> getCategories() {
+	    return catService.getCategories();
 	}
 }

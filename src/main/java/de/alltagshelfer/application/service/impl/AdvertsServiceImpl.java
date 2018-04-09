@@ -18,11 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import de.alltagshelfer.application.entity.Anzeige;
 import de.alltagshelfer.application.entity.Benutzer;
 import de.alltagshelfer.application.entity.Kategorie;
-import de.alltagshelfer.application.entity.Role;
 import de.alltagshelfer.application.model.AdvertModel;
-import de.alltagshelfer.application.model.AdvertsListModel;
 import de.alltagshelfer.application.model.ArtDesPreises;
-import de.alltagshelfer.application.model.RoleName;
 import de.alltagshelfer.application.repository.AnzeigeRepository;
 import de.alltagshelfer.application.repository.BenutzerRepository;
 import de.alltagshelfer.application.repository.KategorieRepository;
@@ -44,58 +41,44 @@ public class AdvertsServiceImpl implements AdvertsService {
 	private Validator validator;
 
 	@Override
-	public AdvertsListModel getAdverts(String text, String category) {
-		AdvertsListModel alm = new AdvertsListModel();
-		alm.setCategories(categoryRepo.findAllByOrderByNameAsc());
+	public List<Anzeige> getAdverts(String text, String category) {
+		List<Anzeige> ret;
 		if (category != null && !category.equals("")) {
 			try {
 				Optional<Kategorie> o = categoryRepo.findById(Long.parseLong(category));
 				if (o.isPresent()) {
-					alm.setAdverts(advertRepo.findByTitelContainingAndKategorie(text, o.get()));
-					return alm;
+					ret = advertRepo.findByTitelContainingAndKategorie(text, o.get());
+					return ret;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		alm.setAdverts(advertRepo.findByTitelContaining(text));
-		return alm;
+		ret = advertRepo.findByTitelContaining(text);
+		return ret;
 	}
 
 	@Override
-	public AdvertsListModel getAdverts(String text, String category, String name) {
-		AdvertsListModel alm = new AdvertsListModel();
-		alm.setCategories(categoryRepo.findAllByOrderByNameAsc());
+	public List<Anzeige> getAdverts(String text, String category, String name) {
 		Optional<Benutzer> benutzer = repo.findByBenutzername(name);
 		if (benutzer.isPresent()) {
 			try {
 				if (category != null && !category.equals("")) {
 					Optional<Kategorie> o = categoryRepo.findById(Long.parseLong(category));
-					if (o.isPresent()) {
-						alm.setAdverts(
-								advertRepo.findByTitelContainingAndKategorieAndBenutzer(text, o.get(), benutzer.get()));
-						return alm;
-
-					}
+					if (o.isPresent())
+						return advertRepo.findByTitelContainingAndKategorieAndBenutzer(text, o.get(), benutzer.get());
 				}
-				alm.setAdverts(advertRepo.findByTitelContainingAndBenutzer(text, benutzer.get()));
-				return alm;
+				return advertRepo.findByTitelContainingAndBenutzer(text, benutzer.get());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		alm.setAdverts(advertRepo.findByTitelContaining(text));
-		return alm;
+		return advertRepo.findByTitelContaining(text);
 	}
 
 	@Override
 	public Anzeige getAdvert(long id) {
 		return advertRepo.findById(id).get();
-	}
-
-	@Override
-	public List<Kategorie> getAllCategories() {
-		return categoryRepo.findAllByOrderByNameAsc();
 	}
 
 	@Override

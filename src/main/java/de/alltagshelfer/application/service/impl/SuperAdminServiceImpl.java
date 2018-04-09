@@ -135,11 +135,6 @@ public class SuperAdminServiceImpl implements SuperAdminService {
 	}
 
 	@Override
-	public List<Kategorie> findAllCategories() {
-		return catRepo.findAllByOrderByNameAsc();
-	}
-
-	@Override
 	public List<String> createCategory(String name) {
 		List<String> errors = new ArrayList<>();
 		if (name == null || name.equals(""))
