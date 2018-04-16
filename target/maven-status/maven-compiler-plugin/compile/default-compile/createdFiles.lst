@@ -3,11 +3,11 @@ de\alltagshelfer\application\model\RoleName.class
 de\alltagshelfer\application\model\ArtDesPreises$1.class
 de\alltagshelfer\application\repository\RoleRepository.class
 de\alltagshelfer\application\controller\AdminController.class
+de\alltagshelfer\application\service\impl\KategorieServiceImpl.class
 de\alltagshelfer\application\entity\Role_.class
 de\alltagshelfer\application\controller\AdvertsController.class
 de\alltagshelfer\application\controller\SignUpController.class
 de\alltagshelfer\application\repository\KategorieRepository.class
-de\alltagshelfer\application\controller\ExceptionController.class
 de\alltagshelfer\application\repository\BenutzerRepository.class
 de\alltagshelfer\application\service\SignUpService.class
 de\alltagshelfer\application\entity\Benutzer_.class
@@ -35,6 +35,6 @@ de\alltagshelfer\application\model\AdvertModel.class
 de\alltagshelfer\application\service\AdvertsService.class
 de\alltagshelfer\application\controller\RestImageController.class
 de\alltagshelfer\application\service\impl\AdminServiceImpl.class
+de\alltagshelfer\application\service\KategorieService.class
 de\alltagshelfer\application\config\SecurityConfiguration.class
 de\alltagshelfer\application\entity\Anzeige.class
-de\alltagshelfer\application\model\AdvertsListModel.class

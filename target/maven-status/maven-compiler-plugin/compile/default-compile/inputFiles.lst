@@ -6,13 +6,13 @@ C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\entity\Kategorie.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\model\AdvertModel.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\controller\SignUpController.java
+C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\service\KategorieService.java
+C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\service\impl\KategorieServiceImpl.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\AlltagshelferApplication.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\model\RoleName.java
-C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\model\AdvertsListModel.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\model\BenutzerDetails.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\config\DatabaseInitializer.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\service\impl\AdminServiceImpl.java
-C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\controller\ExceptionController.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\service\AdvertsService.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\entity\Role.java
 C:\Users\FSche\Desktop\Alltagshelfer\src\main\java\de\alltagshelfer\application\controller\LoginController.java

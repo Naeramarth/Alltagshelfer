@@ -47,32 +47,31 @@
 			<div class="appname"></div>
 			<%-- Suchfilter --%>
 			<div class="searchbar">
-        		<security:authorize access="isAuthenticated()">
-        		<form method="get" class="horizontal" id="search" action="/adverts/">
-            		<select name="category">
-                		<option value="">Alle Kategorien</option>
-                		<c:forEach items="${categories}" var="category">
-                    		<option value="${category.id}"
-								${param.category == category.id ? 'selected' : ''}>
-                       			<c:out value="${category.name}" />
-                    		</option>
-                		</c:forEach>
-            		</select>
-            		<input type="text" name="text" value="${param.text}"
-						placeholder="Beschreibung" id="suchfeld"/>
-            		<button class="search" type="submit">
-                		Suchen
-            		</button>
-        		</form>
+				<security:authorize access="isAuthenticated()">
+					<c:if test="${not empty categories}">
+						<form method="get" class="horizontal" id="search"
+							action="/adverts/">
+							<select name="category">
+								<option value="">Alle Kategorien</option>
+								<c:forEach items="${categories}" var="category">
+									<option value="${category.id}"
+										${param.category == category.id ? 'selected' : ''}>
+										<c:out value="${category.name}" />
+									</option>
+								</c:forEach>
+							</select> <input type="text" name="text" value="${param.text}"
+								placeholder="Beschreibung" id="suchfeld" />
+							<button class="search" type="submit">Suchen</button>
+						</form>
+					</c:if>
 				</security:authorize>
-        	</div>
-        	
-        	<div class="logout">
+			</div>
+
+			<div class="logout">
 				<jsp:invoke fragment="additional" />
-        		<security:authorize access="isAuthenticated()">
-					<div class="menuitem">	
-						<a href="<c:url value="/logout/"/>" class="icon">Logout
-						</a>
+				<security:authorize access="isAuthenticated()">
+					<div class="menuitem">
+						<a href="<c:url value="/logout/"/>" class="icon">Logout </a>
 					</div>
 				</security:authorize>
 			</div>
