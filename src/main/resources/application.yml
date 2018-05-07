@@ -11,12 +11,12 @@ admin:
 #
 #spring:
 # datasource:
-#  url: jdbc:mysql://alltagshelfer.ddns.net:56243/alltagshelfer
+#  url: <censored>
 #  testWhileIdle: true
 #  validationQuery: SELECT 1
 #  driver-class-name: com.mysql.jdbc.Driver
-#  username: alltagshelfer
-#  password: vXRRbaXsFFHpBs9g
+#  username: <censored>
+#  password: <censored>
 # jpa:
 #  show-sql: true
 #  hibernate:
